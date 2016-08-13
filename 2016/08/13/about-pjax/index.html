@@ -3,20 +3,18 @@
 <head>
     <meta charset="utf-8">
     
-    <title>我的博客搭建好了 | Fifteen的博客</title>
+    <title>pjax: 当ajax遇上pushState | Fifteen的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="落花流水时间，希望以此纪念！">
+    <meta name="description" content="var pjax = pushState + ajax;小时候，小浣熊方便面里面有各种水浒人物的卡片。我买了一包，吃了方便面，饱了。而我又买了第二包，不是想吃方便面，而是仅仅想得到里面的卡片…">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的博客搭建好了">
-<meta property="og:url" content="http://yoursite.com/2016/08/12/hello-world/index.html">
+<meta property="og:title" content="pjax: 当ajax遇上pushState">
+<meta property="og:url" content="http://yoursite.com/2016/08/13/about-pjax/index.html">
 <meta property="og:site_name" content="Fifteen的博客">
-<meta property="og:description" content="落花流水时间，希望以此纪念！">
-<meta property="og:image" content="http://yoursite.com/css/images/shoes.jpg">
-<meta property="og:updated_time" content="2016-08-13T06:34:13.653Z">
+<meta property="og:description" content="var pjax = pushState + ajax;小时候，小浣熊方便面里面有各种水浒人物的卡片。我买了一包，吃了方便面，饱了。而我又买了第二包，不是想吃方便面，而是仅仅想得到里面的卡片…">
+<meta property="og:updated_time" content="2016-08-13T06:42:08.670Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的博客搭建好了">
-<meta name="twitter:description" content="落花流水时间，希望以此纪念！">
-<meta name="twitter:image" content="http://yoursite.com/css/images/shoes.jpg">
+<meta name="twitter:title" content="pjax: 当ajax遇上pushState">
+<meta name="twitter:description" content="var pjax = pushState + ajax;小时候，小浣熊方便面里面有各种水浒人物的卡片。我买了一包，吃了方便面，饱了。而我又买了第二包，不是想吃方便面，而是仅仅想得到里面的卡片…">
     
 
     
@@ -207,7 +205,7 @@
 </aside>
 
             
-            <section id="main"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-about-pjax" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -216,7 +214,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            我的博客搭建好了
+            pjax: 当ajax遇上pushState
         </h1>
     
 
@@ -225,19 +223,19 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/08/12/hello-world/">
-            <time datetime="2016-08-12T09:28:29.000Z" itemprop="datePublished">2016-08-12</time>
+        <a href="/2016/08/13/about-pjax/">
+            <time datetime="2016-08-13T00:55:00.000Z" itemprop="datePublished">2016-08-13</time>
         </a>
     </div>
 
 
                         
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/个人/">个人</a>
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/html5/">html5</a>, <a class="tag-link" href="/tags/js/">js</a>
     </div>
 
-                        
                     </div>
                 
             </header>
@@ -245,13 +243,57 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-                <div id="toc" class="toc-article">
-                <strong class="toc-title">Catalogue</strong>
-                    
-                </div>
-            
-            <img src="/css/images/shoes.jpg">
-<p>落花流水时间，希望以此纪念！</p>
+            <blockquote>
+<p>var pjax = pushState + ajax;<br>小时候，小浣熊方便面里面有各种水浒人物的卡片。我买了一包，吃了方便面，饱了。而我又买了第二包，不是想吃方便面，而是仅仅想得到里面的卡片…          </p>
+</blockquote>
+<a id="more"></a>
+<p>##<strong>一、简介</strong><br>pushState是html5中提供的方法，用以</p>
+<ul>
+<li>无刷新的更新浏览器地址栏；            </li>
+<li>如其名称，将新地址push到历史堆栈中            </li>
+</ul>
+<p>用法：<code>pushState(data, title ,url)</code>            </p>
+<p>data为保存的对象，可以在window.onpopstate时获取到；title为页面标题；url为需地址栏和历史发生改变的url。<br>正是这点看似很平常的功能，跟ajax结合到一起产生了火花。因为，ajax最擅长的事情就是局部刷新页面。</p>
+<p>##<strong>二、ajax的纠结历史</strong><br>一切可以从ajax最擅长的事情说起。<br>ajax作为一个异步请求模型，从最初设计开始，也许压根就没打算将它跟浏览器历史挂钩。原因是历史堆栈所记录的，某种意思上可以说是顺序，跟我们理解的“同步”更为密切。</p>
+<p>因而，<code>ajax可以无刷新改变页面内容，却无法改变页面的url</code>。</p>
+<ul>
+<li>####历史问题1 - 如何操控历史</li>
+</ul>
+<p>当单页面越来越流行，操作记录却很容易被忽略。假设有这样的单页面，按照分类点击，界面逐层递进：<code>体育 - 篮球 -nba -马刺队 - 邓肯</code><br>当我们点了4下到“邓肯”界面时，一个不小心的刷新，出现在你面前的也许是“体育”。原因是操作记录没有被记录。<br>而通常的解决方案是修改hash，每递进一层，去更新url的hash值，这样的方法：</p>
+<ol>
+<li>刷新时预先判断url的hash，从而知道这是哪一层，加载相应数据；          </li>
+<li>支持了历史</li>
+</ol>
+<p>这样的方式貌似比较完善，其实不然。</p>
+<ul>
+<li>####历史问题2 - 对搜索引擎不友好</li>
+</ul>
+<p>最大的问题是，hash后生成的内容是不会被搜索引擎引用到。数据不能被爬取，无疑是浪费和损失。因此google放言，咱可以约定个协议：<code>#!xxx</code>这样hash的url，google也去爬取。称之为<code>hash bang</code>（哈希大爆炸？）。这一协议，在g+，twitter，人人，新浪微博上都可以看到。</p>
+<p>事实上，ajax最或缺的两个问题，恰好被pushState的功能补充完善。</p>
+<p>##<strong>三、pjax带来的价值</strong><br>除去补齐了ajax的问题，我们发现pjax会给web带来更多的好处。<br>回到开始说的“两包方便面”，我的意思是，有时你访问两个url，部分数据是相同的。比如百度贴吧，第一页和第二页的区别只是帖子内容（卡片）的不同，网站外框部分（方便面）都是一样的，这些东西就不需要在页面刷新时重复加载。</p>
+<p>ajax处理这样的局部刷新，已经给我们带来了web2.0的体验，而加上pushstate的ajax则更进一步：</p>
+<ol>
+<li>一个url对应一套数据，有利于SEO；</li>
+<li>更改数据和url时，只是局部刷新，带来较好的用户体验；</li>
+<li>兼容性好，对不支持pushstate的浏览器，url也能正常请求页面（虽然有重复加载）；</li>
+<li>刷新页面时，由于是url唯一，能正常加载到用户希望看到的数据，比处理hash的方式更方便；</li>
+<li>后退与前进的浏览器操作，依然可以局部刷新（通过onpushstate事件捕获）</li>
+</ol>
+<p>##<strong>四、注意事项</strong></p>
+<p>然而pjax不等于单纯的分离使用pushstate与ajax，还必须得做一些封装。缘于以下我能想到的注意事项：</p>
+<ul>
+<li>服务器端增加额外处理逻辑<br>服务器端，需要根据请求的参数，作出全页渲染或局部渲染响应<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Accept:text/html, */*; q=0.01</div><div class="line">Accept-Encoding:gzip,deflate,sdch</div><div class="line">Connection:keep-alive</div><div class="line">Host:qianduannotes.duapp.com</div><div class="line">User-Agent:AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36</div><div class="line">X-Requested-With:XMLHttpRequest</div><div class="line">X-PJAX:true</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>比如请求头部可以设定一个X-PAJX:true，用以通知服务器。</p>
+<ul>
+<li><p>浏览器兼容<br>假如浏览器不支持pushstate，提供fallback操作，直接打开需更改url的地址：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$.support.pjax = window.history &amp;&amp; window.history.pushState</div><div class="line">// Fallback</div><div class="line">if ( !$.support.pjax ) &#123;</div><div class="line">  $.pjax = function( options ) &#123;</div><div class="line">    window.location = $.isFunction(options.url) ? options.url() : options.url</div><div class="line">  &#125;</div><div class="line">  $.fn.pjax = function() &#123; return this &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>本地存储机制<br>无疑pjax与localstorage共同使用可以进一步提升体验，但这一步容易忽略的是数据上报。</p>
+</li>
+</ul>
+<p>##<strong>五、参考资料</strong><br><a href="https://github.com/defunkt/jquery-pjax" target="_blank" rel="external">jquery-pjax</a><br><a href="https://github.com/welefen/pjax" target="_blank" rel="external">welefen封装的pjax</a></p>
 
         
         </div>
@@ -262,7 +304,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/12/hello-world/" data-id="cirstf3wm0006e0vbf33shx8x" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/13/about-pjax/" data-id="cirstf3we0002e0vbq7occqsw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -330,7 +372,7 @@
 
             
     
-        <a href="http://yoursite.com/2016/08/12/hello-world/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/12/hello-world/">Comments</a>
+        <a href="http://yoursite.com/2016/08/13/about-pjax/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/13/about-pjax/">Comments</a>
     
 
         </footer>
@@ -339,15 +381,20 @@
         
 <nav id="article-nav">
     
-        <a href="/2016/08/13/about-pjax/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2016/08/13/img-lazy-load/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Newer</strong>
             <div class="article-nav-title">
                 
-                    pjax: 当ajax遇上pushState
+                    说到加载图片，我们可以谈些什么
                 
             </div>
         </a>
     
+    
+        <a href="/2016/08/12/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">我的博客搭建好了</div>
+        </a>
     
 </nav>
 
@@ -360,7 +407,7 @@
     <section id="comments">
     
         
-    <div class="ds-thread" data-thread-key="2016/08/12/hello-world/" data-title="我的博客搭建好了" data-url="http://yoursite.com/2016/08/12/hello-world/"></div>
+    <div class="ds-thread" data-thread-key="2016/08/13/about-pjax/" data-title="pjax: 当ajax遇上pushState" data-url="http://yoursite.com/2016/08/13/about-pjax/"></div>
     <style>
         #ds-thread #ds-reset .ds-textarea-wrapper {
             background: none;

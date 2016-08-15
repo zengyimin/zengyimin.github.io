@@ -156,7 +156,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                5
+                6
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -209,6 +209,139 @@
 
             
             <section id="main">
+    <article id="post-about-mobile" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/08/15/about-mobile/">全景图H5制作之--three.js</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/15/about-mobile/">
+            <time datetime="2016-08-15T01:55:00.000Z" itemprop="datePublished">2016-08-15</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Study/">Study</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/html/">html</a>, <a class="tag-link" href="/tags/js/">js</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>最近关注了QQ物联合深圳天文台合作推出一个“星球计划”的H5推广，里面有用到全景图，是利用three.js制作的。<br>转动手机在模拟的宇宙里搜寻各大行星，就是我们今天要说的基于Html5的3D全景漫游。<br><img src="https://isux.tencent.com/wp-content/uploads/2016/03/20160329103800585.gif" alt="原图 by UIchina"><br></p>
+            <p class="article-more-link">
+                <a href="/2016/08/15/about-mobile/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/08/15/about-mobile/" data-id="cirvh4rza000068vbku0o7yw0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/15/about-mobile/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/15/about-mobile/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-about-wx" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -251,7 +384,7 @@
         
         <div class="article-entry" itemprop="articleBody">
         
-            <p><p>什么是弹框?<br>弹框是一种交互方式，用作提醒，做决定或者解决某个任务。弹框一般包含一个蒙版，一个主体及一个关闭入口，常见于网页及移动端。其好处是让用户更聚焦，且不用离开当前页面，更快更容易完成任务。由于弹框与当下流行的卡片式设计在表现形式上十分接近，同时弹框也逐渐承载了更多功能性需求，不再是简单的内容堆砌，因此弹框设计正在被越来越多设计师关注。<br></p>
+            <p><p>什么是弹框?<br>弹框是一种交互方式，用作提醒，做决定或者解决某个任务。弹框一般包含一个蒙版，一个主体及一个关闭入口，常见于网页及移动端。其好处是让用户更聚焦，且不用离开当前页面，更快更容易完成任务。由于弹框与当下流行的卡片式设计在表现形式上十分接近，同时弹框也逐渐承载了更多功能性需求，不再是简单的内容堆砌，因此弹框设计正在被越来越多设计师关注。<br><img src="https://isux.tencent.com/wp-content/uploads/2016/06/pic1.png" alt="原图 by UIchina"><br></p>
             <p class="article-more-link">
                 <a href="/2016/08/15/about-wx/#more">Read More</a>
             </p>
@@ -264,7 +397,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/15/about-wx/" data-id="cirvdo7qe0002cwvb0ldc4x14" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/15/about-wx/" data-id="cirvh4s09000768vbkpdx856k" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -398,7 +531,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/13/jquery-loading/" data-id="cirvdo7qq0009cwvbzo7t038q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/13/jquery-loading/" data-id="cirvh4s0m000l68vbiilunpvm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -534,7 +667,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/13/img-lazy-load/" data-id="cirvdo7qo0007cwvbj71exh96" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/13/img-lazy-load/" data-id="cirvh4s0h000c68vbrsk9lwfv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -670,7 +803,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/13/about-pjax/" data-id="cirvdo7q90000cwvbblira4u1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/13/about-pjax/" data-id="cirvh4s0c000968vbwwlj7519" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -798,7 +931,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/12/hello-world/" data-id="cirvdo7qm0006cwvb9t0s6dlo" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/12/hello-world/" data-id="cirvh4s0j000f68vb3lara11t" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -888,6 +1021,25 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2016/08/15/about-mobile/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://huaban.com/go/?pin_id=41983662)" alt="全景图H5制作之--three.js" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study/">Study</a></p>
+                            <p class="item-title"><a href="/2016/08/15/about-mobile/" class="title">全景图H5制作之--three.js</a></p>
+                            <p class="item-date"><time datetime="2016-08-15T01:55:00.000Z" itemprop="datePublished">2016-08-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2016/08/15/about-wx/" class="thumbnail">
     
     
@@ -961,25 +1113,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/08/12/hello-world/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://i.imgur.com/95r6aL4.jpg)" alt="我的博客搭建好了" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/个人/">个人</a></p>
-                            <p class="item-title"><a href="/2016/08/12/hello-world/" class="title">我的博客搭建好了</a></p>
-                            <p class="item-date"><time datetime="2016-08-12T09:28:29.000Z" itemprop="datePublished">2016-08-12</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -989,7 +1122,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Study/">Study</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人/">个人</a><span class="category-list-count">2</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Study/">Study</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人/">个人</a><span class="category-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -998,7 +1131,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">5</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">6</span></li></ul>
         </div>
     </div>
 
@@ -1007,7 +1140,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ui/">ui</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ui/">ui</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 

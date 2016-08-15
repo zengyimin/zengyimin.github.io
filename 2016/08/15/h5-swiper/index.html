@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>移动端开发常见的问题？ | Fifteen的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="最近在开发公司基于微信端的服务号，遇到一些坑，也只有跳进去才知道该如何解决？
+跳坑之一：移动端适配的方案，网上有很多关于移动端适配的方案，有rem，Media Query和js+css，总之，不同的场景用不同的方案，在我刚接触移动适配的时候我是选择用Media去做兼容性写法，后来发现这样写的效率很低，代码冗余，最关键的是只能大致针对多数设备做一个折中的方案，做不到全适配。后来，选择了rem去做适配">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端开发常见的问题？">
+<meta property="og:url" content="http://yoursite.com/2016/08/15/h5-swiper/index.html">
+<meta property="og:site_name" content="Fifteen的博客">
+<meta property="og:description" content="最近在开发公司基于微信端的服务号，遇到一些坑，也只有跳进去才知道该如何解决？
+跳坑之一：移动端适配的方案，网上有很多关于移动端适配的方案，有rem，Media Query和js+css，总之，不同的场景用不同的方案，在我刚接触移动适配的时候我是选择用Media去做兼容性写法，后来发现这样写的效率很低，代码冗余，最关键的是只能大致针对多数设备做一个折中的方案，做不到全适配。后来，选择了rem去做适配">
+<meta property="og:image" content="http://hbimg.b0.upaiyun.com/6ed48960790ca294c2332ce02ef4f30779d190432422c-G2IcNF_fw658">
+<meta property="og:updated_time" content="2016-08-15T06:03:07.780Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动端开发常见的问题？">
+<meta name="twitter:description" content="最近在开发公司基于微信端的服务号，遇到一些坑，也只有跳进去才知道该如何解决？
+跳坑之一：移动端适配的方案，网上有很多关于移动端适配的方案，有rem，Media Query和js+css，总之，不同的场景用不同的方案，在我刚接触移动适配的时候我是选择用Media去做兼容性写法，后来发现这样写的效率很低，代码冗余，最关键的是只能大致针对多数设备做一个折中的方案，做不到全适配。后来，选择了rem去做适配">
+<meta name="twitter:image" content="http://hbimg.b0.upaiyun.com/6ed48960790ca294c2332ce02ef4f30779d190432422c-G2IcNF_fw658">
+    
+
+    
+        <link rel="alternate" href="/" title="Fifteen的博客" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+    
+    
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Fifteen的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">所有文章</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+                    <a class="main-nav-link" href="/share">分享</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/litten.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">所有文章</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                    <td><a class="main-nav-link" href="/share">分享</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/litten.png" />
+            <h2 id="name">mandy的帅气男盆友</h2>
+            <h3 id="title">前端攻城狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>湖北</span>
+            <a id="follow" target="_blank" href="https://zengyimin.github.io/">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                7
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                5
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/zengyimin" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-h5-swiper" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            移动端开发常见的问题？
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/15/h5-swiper/">
+            <time datetime="2016-08-15T03:55:00.000Z" itemprop="datePublished">2016-08-15</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Study/">Study</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/html/">html</a>, <a class="tag-link" href="/tags/js/">js</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>最近在开发公司基于微信端的服务号，遇到一些坑，也只有跳进去才知道该如何解决？</p>
+<p>跳坑之一：<br>移动端适配的方案，网上有很多关于移动端适配的方案，有rem，Media Query和js+css，总之，不同的场景用不同的方案，在我刚接触移动适配的时候我是选择用Media去做兼容性写法，后来发现这样写的效率很低，代码冗余，最关键的是只能大致针对多数设备做一个折中的方案，做不到全适配。后来，选择了rem去做适配，因为只需要将px换算成rem就可以全适配，但是在字体的处理和图标的处理上用rem的话误差有点大，所以个人建议还是用px，根据设备的分辨率采用不同的大小，一般主流的也就是1倍，2倍和3倍。相对应的px变成<em>1，</em>2，*3也就ok了。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div></pre></td><td class="code"><pre><div class="line">	 (function( window , document )&#123;</div><div class="line"></div><div class="line">	&apos;use strict&apos;;</div><div class="line"></div><div class="line">	//给hotcss开辟个命名空间，别问我为什么，我要给你准备你会用到的方法，免得用到的时候还要自己写。</div><div class="line">	var hotcss = &#123;&#125;;</div><div class="line"></div><div class="line">	(function() &#123;</div><div class="line">        //根据devicePixelRatio自定计算scale</div><div class="line">        //可以有效解决移动端1px这个世纪难题。</div><div class="line">        var viewportEl = document.querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;),</div><div class="line">            hotcssEl = document.querySelector(&apos;meta[name=&quot;hotcss&quot;]&apos;),</div><div class="line">            dpr = window.devicePixelRatio,</div><div class="line">            maxWidth = 540,</div><div class="line">            designWidth = 0;</div><div class="line"></div><div class="line"></div><div class="line">		//var isAndroid = win.navigator.appVersion.match(/android/gi);</div><div class="line">		var isIPhone = window.navigator.appVersion.match(/iphone/gi);</div><div class="line">		if (isIPhone) &#123;</div><div class="line">		    // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案</div><div class="line">		    if (dpr &gt;= 3 &amp;&amp; (!dpr || dpr &gt;= 3)) &#123;				</div><div class="line">		      dpr = 3;</div><div class="line">		    &#125; else if (dpr &gt;= 2 &amp;&amp; (!dpr || dpr &gt;= 2))&#123;</div><div class="line">		      dpr = 2;</div><div class="line">		    &#125; else &#123;</div><div class="line">		      dpr = 1;</div><div class="line">		    &#125;</div><div class="line">	  	&#125; else &#123;</div><div class="line">		    // 其他设备下，仍旧使用1倍的方案</div><div class="line">		    dpr = 1;</div><div class="line">	  	&#125;</div><div class="line"></div><div class="line">        //允许通过自定义name为hotcss的meta头，通过initial-dpr来强制定义页面缩放</div><div class="line">        if (hotcssEl) &#123;</div><div class="line">            var hotcssCon = hotcssEl.getAttribute(&apos;content&apos;);</div><div class="line">            if (hotcssCon) &#123;</div><div class="line">                var initialDprMatch = hotcssCon.match(/initial\-dpr=([\d\.]+)/);</div><div class="line">                if (initialDprMatch) &#123;</div><div class="line">                    dpr = parseFloat(initialDprMatch[1]);</div><div class="line">                &#125;</div><div class="line">                var maxWidthMatch = hotcssCon.match(/max\-width=([\d\.]+)/);</div><div class="line">                if (maxWidthMatch) &#123;</div><div class="line">                    maxWidth = parseFloat(maxWidthMatch[1]);</div><div class="line">                &#125;</div><div class="line">                var designWidthMatch = hotcssCon.match(/design\-width=([\d\.]+)/);</div><div class="line">                if (designWidthMatch) &#123;</div><div class="line">                    designWidth = parseFloat(designWidthMatch[1]);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        document.documentElement.setAttribute(&apos;data-dpr&apos;, dpr);</div><div class="line">        hotcss.dpr = dpr;</div><div class="line"></div><div class="line">        document.documentElement.setAttribute(&apos;max-width&apos;, maxWidth);</div><div class="line">        hotcss.maxWidth = maxWidth;</div><div class="line"></div><div class="line">        if( designWidth )&#123;</div><div class="line">            document.documentElement.setAttribute(&apos;design-width&apos;, designWidth);</div><div class="line">            hotcss.designWidth = designWidth;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        var scale = 1 / dpr;</div><div class="line">        </div><div class="line">        //iphone6 hack, 2016/05/12 by alu</div><div class="line">        if (scale == 0.5 &amp;&amp; isIPhone &amp;&amp; window.innerWidth == 375)  &#123;</div><div class="line">            scale = 0.51;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        var content = &apos;initial-scale=&apos; + scale + &apos;, minimum-scale=&apos; + scale + &apos;, maximum-scale=&apos; + scale + &apos;, user-scalable=no,width=device-width&apos;;</div><div class="line">		</div><div class="line">        if (viewportEl) &#123;</div><div class="line">            viewportEl.setAttribute(&apos;content&apos;, content);</div><div class="line">        &#125; else &#123;</div><div class="line">            viewportEl = document.createElement(&apos;meta&apos;);</div><div class="line">            viewportEl.setAttribute(&apos;name&apos;, &apos;viewport&apos;);</div><div class="line">            viewportEl.setAttribute(&apos;content&apos;, content);</div><div class="line">            document.head.appendChild(viewportEl);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;)();</div><div class="line"></div><div class="line">	hotcss.px2rem = function( px , designWidth )&#123;</div><div class="line">		//预判你将会在JS中用到尺寸，特提供一个方法助你在JS中将px转为rem。就是这么贴心。</div><div class="line">		if( !designWidth )&#123;</div><div class="line">			//如果你在JS中大量用到此方法，建议直接定义 hotcss.designWidth 来定义设计图尺寸;</div><div class="line">			//否则可以在第二个参数告诉我你的设计图是多大。</div><div class="line">			designWidth = parseInt(hotcss.designWidth , 10);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		return parseInt(px,10)*320/designWidth/20;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	hotcss.rem2px = function( rem , designWidth )&#123;</div><div class="line">		//新增一个rem2px的方法。用法和px2rem一致。</div><div class="line">		if( !designWidth )&#123;</div><div class="line">			designWidth = parseInt(hotcss.designWidth , 10);</div><div class="line">		&#125;</div><div class="line">		//rem可能为小数，这里不再做处理了</div><div class="line">		return rem*20*designWidth/320;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">    hotcss.remAddpx=function(rem,px,designWidth)&#123;</div><div class="line"></div><div class="line">        var px1=hotcss.rem2px(rem,designWidth);</div><div class="line">        var px2=px*hotcss.dpr/2;</div><div class="line"></div><div class="line">        return px1+px2;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">	hotcss.mresize = function()&#123;</div><div class="line">		//对，这个就是核心方法了，给HTML设置font-size。</div><div class="line">		var innerWidth = document.documentElement.getBoundingClientRect().width || window.innerWidth;</div><div class="line"></div><div class="line">        if( hotcss.maxWidth &amp;&amp; (innerWidth/hotcss.dpr &gt; hotcss.maxWidth) )&#123;</div><div class="line">            innerWidth = hotcss.maxWidth*hotcss.dpr;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">		if( !innerWidth )&#123; return false;&#125;</div><div class="line"></div><div class="line">		document.documentElement.style.fontSize = ( innerWidth*20/320 ) + &apos;px&apos;;</div><div class="line">        //document.documentElement.style.zoom =1/ hotcss.dpr;</div><div class="line"></div><div class="line"></div><div class="line">        hotcss.callback &amp;&amp; hotcss.callback();</div><div class="line"></div><div class="line">	&#125;;</div><div class="line"></div><div class="line">	hotcss.mresize(); </div><div class="line">	//直接调用一次</div><div class="line"></div><div class="line">	window.addEventListener( &apos;resize&apos; , function()&#123;</div><div class="line">		clearTimeout( hotcss.tid );</div><div class="line">		hotcss.tid = setTimeout( hotcss.mresize , 33 );</div><div class="line">	&#125; , false ); </div><div class="line">	//绑定resize的时候调用</div><div class="line"></div><div class="line">	window.addEventListener( &apos;load&apos; , hotcss.mresize , false ); </div><div class="line">	//防止不明原因的bug。load之后再调用一次。</div><div class="line"></div><div class="line"></div><div class="line">	setTimeout(function()&#123;</div><div class="line">		hotcss.mresize(); </div><div class="line">		//防止某些机型怪异现象，异步再调用一次</div><div class="line">	&#125;,333)</div><div class="line"></div><div class="line">	window.hotcss = hotcss; </div><div class="line">	//命名空间暴露给你，控制权交给你，想怎么调怎么调。</div><div class="line"></div><div class="line"></div><div class="line">&#125;)( window , document );</div></pre></td></tr></table></figure></p>
+<p>跳坑之二<br>移动端图片的处理<br>因为做的是电商类项目，因此图片展示是占了页面的80%，大量的商品需要展示在有限的空间里，一开始是采用的电脑端一样的分页系统，发现体验不好，总感觉怪怪的。后来经过与负责人沟通之后改为滚动加载分页，当然说实话还是因为公司没有产品经理，而且需求在不断的变化（是因为项目在不断的摸索中，根据市场的反馈可能会做调整）。图片的大小是返回的是后台处理过的大小，保证不被拉伸或者压缩。<br>这里谈谈滚动加载的核心代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">window.onscroll = function()&#123;</div><div class="line">               //获取整个bdoy内容文档的高度</div><div class="line">               var dheight = document.body.clientHeight || document.documentElement.scrollHeight;</div><div class="line">               //获取滚动条的高度</div><div class="line">               var stop = document.body.scrollTop || document.documentElement.scrollTop;</div><div class="line">               //var sheight = document.body.scrollHeight || document.documentElement.scrollHeight;</div><div class="line">               //获取可视区域的高度</div><div class="line">               var cheight = window.innerHeight || document.documentElement.clientHeight;</div><div class="line">               var dh = stop+cheight+20;</div><div class="line">               if(dh &gt;= dheight)&#123;</div><div class="line">                   clearTimeout(this.scrollTimer);</div><div class="line">                   this.scrollTimer = setTimeout(function()&#123;</div><div class="line">                       //执行ajax操作数据</div><div class="line">                       page++;</div><div class="line">                       if(page &lt;= data.pageCount)&#123;</div><div class="line">                           showAjax(page);</div><div class="line">                           //$(&quot;#loading&quot;).show();</div><div class="line">                           //$(&quot;#nomore&quot;).hide();</div><div class="line">                       &#125;else&#123;</div><div class="line">                           //Notify.notify(&#123; message: &quot;更多内容,敬请期待&quot;, type: &quot;warning&quot;, duration: 2000 &#125;);</div><div class="line">                           //alert(&quot;没有更多了&quot;);</div><div class="line">                            </div><div class="line">                           //$(&quot;#loading&quot;).hide();</div><div class="line">                           //$(&quot;#nomore&quot;).show();</div><div class="line">                           return false;</div><div class="line">                   &#125;</div><div class="line">               </div><div class="line">                   &#125;,200);</div><div class="line">           &#125;</div><div class="line">                   &#125;;</div></pre></td></tr></table></figure></p>
+<p>跳坑之三<br>a链接跳转后样式重置的问题，我的导航用到了a链接，点击后跳转，对应的样式需要对应到点击后的a链接上。<br>直接贴代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if ($($(this))[0].href == String(window.location)) &#123;</div><div class="line">              </div><div class="line">            &#125;;//如果这个链接的地址跟窗口的地址做对比，如果发生了跳转那么为true</div></pre></td></tr></table></figure></p>
+<p>跳坑之四<br>底部功能栏连续点击后有些安卓机器的微信浏览器无法识别是不是新的链接而跳转。<br>一开始的底部功能栏是直接用html写在页面上的，后来测试发现有些安卓机器多次点击后不跳转。后来改为动态加载底部功能栏，a链接的后面跟上时间戳。让浏览器能识别该链接已经发生了变化从而去跳转。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">var d = new Date().getTime();</div><div class="line">     var footerHtml = &apos;&lt;ul class=&quot;list&quot;&gt;&apos; +</div><div class="line">                       &apos;&lt;li class=&quot;item&quot;&gt;&apos; +</div><div class="line">                        &apos;   &lt;a href=&quot;/shop-place?t=&apos;+d+&apos;&quot;&gt;&apos; +</div><div class="line">                         &apos;      &lt;i class=&quot;u-icon u-icon-topic&quot;&gt;&lt;/i&gt;&apos; +</div><div class="line">                           &apos;      &lt;span class=&quot;txt&quot;&gt;场景&lt;/span&gt;&apos; +</div><div class="line">                          &apos;   &lt;/a&gt;&apos; +</div><div class="line">                       &apos;  &lt;/li&gt;&apos; +</div><div class="line">                       &apos;  &lt;li class=&quot;item&quot;&gt;&apos; +</div><div class="line">                        &apos;     &lt;a href=&quot;/brand_list?t=&apos; + d + &apos;&quot;&gt;&apos; +</div><div class="line">                           &apos;      &lt;i class=&quot;u-icon u-icon-cate&quot;&gt;&lt;/i&gt;&apos; +</div><div class="line">                           &apos;      &lt;span class=&quot;txt&quot;&gt;品牌&lt;/span&gt;&apos; +</div><div class="line">                           &apos;  &lt;/a&gt;&apos; +</div><div class="line">                        &apos; &lt;/li&gt;&apos; +</div><div class="line">                        &apos;  &lt;li class=&quot;item&quot;&gt;&apos; +</div><div class="line">                           &apos;  &lt;a href=&quot;/producePage?t=&apos; + d + &apos;&quot;&gt;&apos; +</div><div class="line">                              &apos;   &lt;i class=&quot;u-icon u-icon-house&quot;&gt;&lt;/i&gt;&apos; +</div><div class="line">                             &apos;    &lt;span class=&quot;txt&quot;&gt;商城&lt;/span&gt;&apos; +</div><div class="line">                          &apos;   &lt;/a&gt;&apos; +</div><div class="line">                       &apos;  &lt;/li&gt;&apos; +</div><div class="line">                       &apos;  &lt;li class=&quot;item&quot;&gt;&apos; +</div><div class="line">                          &apos;   &lt;a href=&quot;/ucenter?t=&apos; + d + &apos;&quot;&gt;&apos; +</div><div class="line">                            &apos;     &lt;i class=&quot;u-icon u-icon-profile&quot;&gt;&lt;/i&gt;&apos; +</div><div class="line">                           &apos;      &lt;span class=&quot;txt&quot;&gt;个人&lt;/span&gt;&apos; +</div><div class="line">                          &apos;   &lt;/a&gt;&apos; +</div><div class="line">                     &apos;    &lt;/li&gt;&apos; +</div><div class="line">                 &apos;    &lt;/ul&gt;&apos;;</div></pre></td></tr></table></figure></p>
+<p>另外为了方便开发，选择了jquery的Swiper.js插件进行头部分类栏，flexslider.js来做广告图的展示。<br>具体开发的时候还需要到一些问题以及解决的方法，下回我们在慢慢讲解。<br>end.</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/08/15/h5-swiper/" data-id="cirvmwqwd000278vbjgi9dkjy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/15/h5-swiper/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/15/h5-swiper/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2016/08/15/about-mobile/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">全景图H5制作之--three.js</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2016/08/15/h5-swiper/" data-title="移动端开发常见的问题？" data-url="http://yoursite.com/2016/08/15/h5-swiper/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/15/h5-swiper/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/6ed48960790ca294c2332ce02ef4f30779d190432422c-G2IcNF_fw658)" alt="移动端开发常见的问题？" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study/">Study</a></p>
+                            <p class="item-title"><a href="/2016/08/15/h5-swiper/" class="title">移动端开发常见的问题？</a></p>
+                            <p class="item-date"><time datetime="2016-08-15T03:55:00.000Z" itemprop="datePublished">2016-08-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/15/about-mobile/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/38dcfca1ff5d12614f9bfe8bcda233307330f59dad7d-qMLgA6_fw658)" alt="全景图H5制作之--three.js" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study/">Study</a></p>
+                            <p class="item-title"><a href="/2016/08/15/about-mobile/" class="title">全景图H5制作之--three.js</a></p>
+                            <p class="item-date"><time datetime="2016-08-15T01:55:00.000Z" itemprop="datePublished">2016-08-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/15/about-wx/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://i.imgur.com/u5VyrXk.jpg)" alt="100个弹框设计小结" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study/">Study</a></p>
+                            <p class="item-title"><a href="/2016/08/15/about-wx/" class="title">100个弹框设计小结</a></p>
+                            <p class="item-date"><time datetime="2016-08-15T00:55:00.000Z" itemprop="datePublished">2016-08-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/13/jquery-loading/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://i.imgur.com/5DAmad5.png)" alt="jquery简单封装loading插件（一）" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study/">Study</a></p>
+                            <p class="item-title"><a href="/2016/08/13/jquery-loading/" class="title">jquery简单封装loading插件（一）</a></p>
+                            <p class="item-date"><time datetime="2016-08-13T09:20:13.000Z" itemprop="datePublished">2016-08-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/13/img-lazy-load/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://i.imgur.com/xtoLyW2.jpg)" alt="说到加载图片，我们可以谈些什么" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/个人/">个人</a></p>
+                            <p class="item-title"><a href="/2016/08/13/img-lazy-load/" class="title">说到加载图片，我们可以谈些什么</a></p>
+                            <p class="item-date"><time datetime="2016-08-13T03:54:00.000Z" itemprop="datePublished">2016-08-13</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Study/">Study</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人/">个人</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ui/">ui</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/html/" style="font-size: 20px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/ui/" style="font-size: 10px;">ui</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2016 zengyimin<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'zengyimin'};
+    (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

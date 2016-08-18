@@ -3,20 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>pjax: 当ajax遇上pushState | Fifteen的博客</title>
+    <title>HTML5手势检测和原理 | Fifteen的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="var pjax = pushState + ajax;小时候，小浣熊方便面里面有各种水浒人物的卡片。我买了一包，吃了方便面，饱了。而我又买了第二包，不是想吃方便面，而是仅仅想得到里面的卡片…">
+    <meta name="description" content="先了解下手势常用的 HTML5 手势可以分为两类，单点手势和两点手势。单点手势有 tap(单击)，double tap(双击)，long tap(长按)，swipe(挥)，move(移动)。两点手势有 pinch(缩放)，rotate(旋转)。 接下来我们实现一个检测这些手势的 js 库，并利用这个手势库做出炫酷的交互效果。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pjax: 当ajax遇上pushState">
-<meta property="og:url" content="http://yoursite.com/2016/08/13/about-pjax/index.html">
+<meta property="og:title" content="HTML5手势检测和原理">
+<meta property="og:url" content="http://yoursite.com/2016/08/18/about-touch/index.html">
 <meta property="og:site_name" content="Fifteen的博客">
-<meta property="og:description" content="var pjax = pushState + ajax;小时候，小浣熊方便面里面有各种水浒人物的卡片。我买了一包，吃了方便面，饱了。而我又买了第二包，不是想吃方便面，而是仅仅想得到里面的卡片…">
-<meta property="og:image" content="https://i.imgur.com/UkdCgeL.gif">
-<meta property="og:updated_time" content="2016-08-15T00:45:08.137Z">
+<meta property="og:description" content="先了解下手势常用的 HTML5 手势可以分为两类，单点手势和两点手势。单点手势有 tap(单击)，double tap(双击)，long tap(长按)，swipe(挥)，move(移动)。两点手势有 pinch(缩放)，rotate(旋转)。 接下来我们实现一个检测这些手势的 js 库，并利用这个手势库做出炫酷的交互效果。">
+<meta property="og:image" content="http://hbimg.b0.upaiyun.com/a886eed2a16aa2dd0c064e9bededf4b6bd68e3d763b4-mduCQK_fw658">
+<meta property="og:updated_time" content="2016-08-18T02:40:04.395Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="pjax: 当ajax遇上pushState">
-<meta name="twitter:description" content="var pjax = pushState + ajax;小时候，小浣熊方便面里面有各种水浒人物的卡片。我买了一包，吃了方便面，饱了。而我又买了第二包，不是想吃方便面，而是仅仅想得到里面的卡片…">
-<meta name="twitter:image" content="https://i.imgur.com/UkdCgeL.gif">
+<meta name="twitter:title" content="HTML5手势检测和原理">
+<meta name="twitter:description" content="先了解下手势常用的 HTML5 手势可以分为两类，单点手势和两点手势。单点手势有 tap(单击)，double tap(双击)，long tap(长按)，swipe(挥)，move(移动)。两点手势有 pinch(缩放)，rotate(旋转)。 接下来我们实现一个检测这些手势的 js 库，并利用这个手势库做出炫酷的交互效果。">
+<meta name="twitter:image" content="http://hbimg.b0.upaiyun.com/a886eed2a16aa2dd0c064e9bededf4b6bd68e3d763b4-mduCQK_fw658">
     
 
     
@@ -211,7 +211,7 @@
 </aside>
 
             
-            <section id="main"><article id="post-about-pjax" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-about-touch" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -220,7 +220,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            pjax: 当ajax遇上pushState
+            HTML5手势检测和原理
         </h1>
     
 
@@ -229,8 +229,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/08/13/about-pjax/">
-            <time datetime="2016-08-13T00:55:00.000Z" itemprop="datePublished">2016-08-13</time>
+        <a href="/2016/08/18/about-touch/">
+            <time datetime="2016-08-18T02:24:00.000Z" itemprop="datePublished">2016-08-18</time>
         </a>
     </div>
 
@@ -244,7 +244,7 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/html5/">html5</a>, <a class="tag-link" href="/tags/js/">js</a>
+        <a class="tag-link" href="/tags/mobile/">mobile</a>
     </div>
 
                     </div>
@@ -254,58 +254,20 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <!-- ![原图 by UIchina](/assets/blogImg/fun.jpg)  -->
-<blockquote>
-<p>var pjax = pushState + ajax;<br>小时候，小浣熊方便面里面有各种水浒人物的卡片。我买了一包，吃了方便面，饱了。而我又买了第二包，不是想吃方便面，而是仅仅想得到里面的卡片…          </p>
-</blockquote>
-<a id="more"></a>
-<p>##<strong>一、简介</strong><br>pushState是html5中提供的方法，用以</p>
-<ul>
-<li>无刷新的更新浏览器地址栏；            </li>
-<li>如其名称，将新地址push到历史堆栈中            </li>
-</ul>
-<p>用法：<code>pushState(data, title ,url)</code>            </p>
-<p>data为保存的对象，可以在window.onpopstate时获取到；title为页面标题；url为需地址栏和历史发生改变的url。<br>正是这点看似很平常的功能，跟ajax结合到一起产生了火花。因为，ajax最擅长的事情就是局部刷新页面。</p>
-<p>##<strong>二、ajax的纠结历史</strong><br>一切可以从ajax最擅长的事情说起。<br>ajax作为一个异步请求模型，从最初设计开始，也许压根就没打算将它跟浏览器历史挂钩。原因是历史堆栈所记录的，某种意思上可以说是顺序，跟我们理解的“同步”更为密切。</p>
-<p>因而，<code>ajax可以无刷新改变页面内容，却无法改变页面的url</code>。</p>
-<ul>
-<li>####历史问题1 - 如何操控历史</li>
-</ul>
-<p>当单页面越来越流行，操作记录却很容易被忽略。假设有这样的单页面，按照分类点击，界面逐层递进：<code>体育 - 篮球 -nba -马刺队 - 邓肯</code><br>当我们点了4下到“邓肯”界面时，一个不小心的刷新，出现在你面前的也许是“体育”。原因是操作记录没有被记录。<br>而通常的解决方案是修改hash，每递进一层，去更新url的hash值，这样的方法：</p>
-<ol>
-<li>刷新时预先判断url的hash，从而知道这是哪一层，加载相应数据；          </li>
-<li>支持了历史</li>
-</ol>
-<p>这样的方式貌似比较完善，其实不然。</p>
-<ul>
-<li>####历史问题2 - 对搜索引擎不友好</li>
-</ul>
-<p>最大的问题是，hash后生成的内容是不会被搜索引擎引用到。数据不能被爬取，无疑是浪费和损失。因此google放言，咱可以约定个协议：<code>#!xxx</code>这样hash的url，google也去爬取。称之为<code>hash bang</code>（哈希大爆炸？）。这一协议，在g+，twitter，人人，新浪微博上都可以看到。</p>
-<p>事实上，ajax最或缺的两个问题，恰好被pushState的功能补充完善。</p>
-<p>##<strong>三、pjax带来的价值</strong><br>除去补齐了ajax的问题，我们发现pjax会给web带来更多的好处。<br>回到开始说的“两包方便面”，我的意思是，有时你访问两个url，部分数据是相同的。比如百度贴吧，第一页和第二页的区别只是帖子内容（卡片）的不同，网站外框部分（方便面）都是一样的，这些东西就不需要在页面刷新时重复加载。</p>
-<p>ajax处理这样的局部刷新，已经给我们带来了web2.0的体验，而加上pushstate的ajax则更进一步：</p>
-<ol>
-<li>一个url对应一套数据，有利于SEO；</li>
-<li>更改数据和url时，只是局部刷新，带来较好的用户体验；</li>
-<li>兼容性好，对不支持pushstate的浏览器，url也能正常请求页面（虽然有重复加载）；</li>
-<li>刷新页面时，由于是url唯一，能正常加载到用户希望看到的数据，比处理hash的方式更方便；</li>
-<li>后退与前进的浏览器操作，依然可以局部刷新（通过onpushstate事件捕获）</li>
-</ol>
-<p>##<strong>四、注意事项</strong></p>
-<p>然而pjax不等于单纯的分离使用pushstate与ajax，还必须得做一些封装。缘于以下我能想到的注意事项：</p>
-<ul>
-<li>服务器端增加额外处理逻辑<br>服务器端，需要根据请求的参数，作出全页渲染或局部渲染响应<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Accept:text/html, */*; q=0.01</div><div class="line">Accept-Encoding:gzip,deflate,sdch</div><div class="line">Connection:keep-alive</div><div class="line">Host:qianduannotes.duapp.com</div><div class="line">User-Agent:AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36</div><div class="line">X-Requested-With:XMLHttpRequest</div><div class="line">X-PJAX:true</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>比如请求头部可以设定一个X-PAJX:true，用以通知服务器。</p>
-<ul>
-<li><p>浏览器兼容<br>假如浏览器不支持pushstate，提供fallback操作，直接打开需更改url的地址：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$.support.pjax = window.history &amp;&amp; window.history.pushState</div><div class="line">// Fallback</div><div class="line">if ( !$.support.pjax ) &#123;</div><div class="line">  $.pjax = function( options ) &#123;</div><div class="line">    window.location = $.isFunction(options.url) ? options.url() : options.url</div><div class="line">  &#125;</div><div class="line">  $.fn.pjax = function() &#123; return this &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>本地存储机制<br>无疑pjax与localstorage共同使用可以进一步提升体验，但这一步容易忽略的是数据上报。</p>
-</li>
-</ul>
-<p>##<strong>五、参考资料</strong><br><a href="https://github.com/defunkt/jquery-pjax" target="_blank" rel="external">jquery-pjax</a><br><a href="https://github.com/welefen/pjax" target="_blank" rel="external">welefen封装的pjax</a></p>
+            <p>先了解下手势<br>常用的 HTML5 手势可以分为两类，单点手势和两点手势。单点手势有 tap(单击)，double tap(双击)，long tap(长按)，swipe(挥)，move(移动)。两点手势有 pinch(缩放)，rotate(旋转)。 接下来我们实现一个检测这些手势的 js 库，并利用这个手势库做出炫酷的交互效果。<br><img src="http://7xrvqo.com1.z0.glb.clouddn.com/images/gesture_detection_in_html5/2362670-f0092d3a3c5569e0.8a78c884.gif" alt="原图 by qianduan"><br><a id="more"></a></p>
+<p>#单击(tap)<br>手势检测的关键是用 touchstart，touchmove，touchend 三个事件对手势进行分解。那么怎么分解单击事件呢？</p>
+<p>1 在 touchstart 发生时进入单击检测，只有一个接触点。因为单击事件限制为一个手指的动作。<br>2 没有发生 touchmove 事件或者 touchmove 在一个很小的范围(如下图)。限制 touchmove 在一个很小范围，是为了给用户一定的冗余空间，因为不能保证用户手指在接触屏幕的时候不发生轻微的位移。<br><img src="http://7xrvqo.com1.z0.glb.clouddn.com/images/gesture_detection_in_html5/2362670-6c2122444bc9931e.28abbd66.png" alt="原图 by qianduan"></p>
+<p>3 touchend 发生在 touchstart后的很短时间内(如下图)。这个时间段的阈值是毫秒级，用来限制手指和屏幕接触的时间。因为单击事件从开始到结束是很快的。<br><img src="http://7xrvqo.com1.z0.glb.clouddn.com/images/gesture_detection_in_html5/2362670-1f1576fa5e6de996.e580b0a5.png" alt="原图 by qianduan"><br>有了上面的流程，就可以开始实现 tap 事件监测了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">	_getTime() &#123;</div><div class="line">  return new Date().getTime();</div><div class="line">&#125;</div><div class="line">_onTouchStart(e) &#123;</div><div class="line">    //记录touch开始的位置</div><div class="line">    this.startX = e.touches[0].pageX;</div><div class="line">    this.startY = e.touches[0].pageY;</div><div class="line">    if(e.touches.length &gt; 1) &#123;</div><div class="line">      //多点监测</div><div class="line">      ...</div><div class="line">    &#125;else &#123;</div><div class="line">      //记录touch开始的时间</div><div class="line">      this.startTime = this._getTime();</div><div class="line">    &#125;</div><div class="line"> &#125;</div><div class="line">_onTouchMove(e) &#123;</div><div class="line">  ...</div><div class="line">  //记录手指移动的位置</div><div class="line">  this.moveX = e.touches[0].pageX;</div><div class="line">  this.moveY = e.touches[0].pageY;</div><div class="line">  ...</div><div class="line">&#125;</div><div class="line">_onTouchEnd(e) &#123;</div><div class="line">  let timestamp = this._getTime();</div><div class="line">  if(this.moveX !== null &amp;&amp; Math.abs(this.moveX - this.startX) &gt; 10 ||</div><div class="line">    this.moveY !== null &amp;&amp; Math.abs(this.moveY - this.startY) &gt; 10) &#123;</div><div class="line">      ...</div><div class="line">  &#125;else &#123;</div><div class="line">    //手指移动的位移要小于10像素并且手指和屏幕的接触时间要短语500毫秒</div><div class="line">    if(timestamp - this.startTime &lt; 500) &#123;</div><div class="line">      this._emitEvent(&apos;onTap&apos;)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>#双击(double tap)<br>和单击一样，双击事件也需要我们对手势进行量化分解。 1. 双击事件是一个手指的行为。所以在 touchstart 时，我们要判断此时屏幕有几个接触点。 2. 双击事件中包含两次独立的单击行为。理想情况下，这两次点击应该落在屏幕上的同一个点上。为了给用户一定的冗余空间，将两次点击的坐标点距离限制在10个像素以内。<br><img src="http://7xrvqo.com1.z0.glb.clouddn.com/images/gesture_detection_in_html5/2362670-b9ba91dcca76bc46.4e3e4ca4.png" alt="原图 by qianduan"><br>3 双击事件本质是两次快速的单击。也即是说，两次点击的间隔时间很短。通过一定的测试量化后，我们把两次单击的时间间隔设为300毫秒。<br><img src="http://7xrvqo.com1.z0.glb.clouddn.com/images/gesture_detection_in_html5/2362670-df88e119b4efa2e8.556310d3.png" alt="原图 by qianduan"><br><strong> 注意双击事件中我们检测了相邻两个 touchstart 事件的位移和时间间隔 </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">	_onTouchStart(e) &#123;</div><div class="line">  if(e.touches.length &gt; 1) &#123;</div><div class="line">  ...</div><div class="line">  &#125; else &#123;</div><div class="line">    if(this.previousTouchPoint) &#123;</div><div class="line">      //两次相邻的touchstart之间距离要小于10，同时时间间隔小于300ms</div><div class="line">      if( Math.abs(this.startX -this.previousTouchPoint.startX) &lt; 10  &amp;&amp;</div><div class="line">          Math.abs(this.startY - this.previousTouchPoint.startY) &lt; 10 &amp;&amp;</div><div class="line">          Math.abs(this.startTime - this.previousTouchTime) &lt; 300) &#123;</div><div class="line">            this._emitEvent(&apos;onDoubleTap&apos;);</div><div class="line">          &#125;</div><div class="line">    &#125;</div><div class="line">    //保存上一次touchstart的时间和位置信息</div><div class="line">    this.previousTouchTime = this.startTime;</div><div class="line">    this.previousTouchPoint = &#123;</div><div class="line">        startX : this.startX,</div><div class="line">        startY : this.startY</div><div class="line">     &#125;;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>#长按(long press)<br>长按应该是最容易分解的手势。我们可以这样分解：在 touchstart 发生后的很长一段时间内，如果没有发生 touchmove 或者 touchend 事件，那么就触发长按手势。</p>
+<p>长按是一个手指的行为，需要检测屏幕上是否只有一个接触点。<br>如果手指在空间上发生了移动，那么长按事件取消。<br>如果手指在屏幕上停留的时间超过800ms，那么触发长按手势。<br>如果手指在屏幕上停留的时间小于800ms，也即 touchend 在 touchstart 发生后的800ms内触发，那么长按事件取消。<br><img src="http://7xrvqo.com1.z0.glb.clouddn.com/images/gesture_detection_in_html5/2362670-78b28545c20ed15f.45c5424e.png" alt="原图 by qianduan"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">_onTouchStart(e) &#123;</div><div class="line">  clearTimeout(this.longPressTimeout);</div><div class="line">  if(e.touches.length &gt; 1) &#123;</div><div class="line">  &#125;else &#123;</div><div class="line">    this.longPressTimeout = setTimeout(()=&gt;&#123;</div><div class="line">      this._emitEvent(&apos;onLongPress&apos;);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">_onTouchMove(e) &#123;</div><div class="line">  ...</div><div class="line">  clearTimeout(this.longPressTimeout);</div><div class="line">  ...</div><div class="line">&#125;</div><div class="line">_onTouchEnd(e) &#123;</div><div class="line">  ...</div><div class="line">  clearTimeout(this.longPressTimeout);</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>#缩放(pinch)<br>缩放是一个非常有趣的手势，还记得第一代iPhone双指缩放图片给你带来的震撼吗？虽然如此，缩放手势的检测却相对简单。</p>
+<p>缩放是两个手指的行为，需要检测屏幕上是否有两个接触点。<br>缩放比例的量化，是通过两次缩放行为之间的距离的比值得到，如下图。<br><img src="http://7xrvqo.com1.z0.glb.clouddn.com/images/gesture_detection_in_html5/2362670-cecc52209ff03392.8f08400b.png" alt="原图 by qianduan"><br><strong> 所以缩放的核心是获取两个接触点之间的直线距离。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">_onTouchStart(e) &#123;</div><div class="line">  if(e.touches.length &gt; 1) &#123;</div><div class="line">    let point1 = e.touches[0];</div><div class="line">    let point2 = e.touches[1];</div><div class="line">    let xLen = Math.abs(point2.pageX - point1.pageX);</div><div class="line">    let yLen = Math.abs(point2.pageY - point1.pageY);</div><div class="line">    this.touchDistance = this._getDistance(xLen, yLen);</div><div class="line">  &#125; else &#123;</div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在_onTouchStart函数中获取并且保存 touchstart 发生时两个接触点之间的距离。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">_onTouchMove(e) &#123;</div><div class="line">  if(e.touches.length &gt; 1) &#123;</div><div class="line">      let xLen = Math.abs(e.touches[0].pageX - e.touches[1].pageX);</div><div class="line">      let yLen = Math.abs(e.touches[1].pageY - e.touches[1].pageY);</div><div class="line">      let touchDistance = this._getDistance(xLen,yLen);</div><div class="line">      if(this.touchDistance) &#123;</div><div class="line">        let pinchScale = touchDistance / this.touchDistance;</div><div class="line">          this._emitEvent(&apos;onPinch&apos;,&#123;scale:pinchScale - this.previousPinchScale&#125;);</div><div class="line">          this.previousPinchScale = pinchScale;</div><div class="line">      &#125;</div><div class="line">  &#125;else &#123;</div><div class="line">    ...</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>#旋转(rotate)<br>旋转手势需要检测两个比较重要的值，一是旋转的角度，二是旋转的方向(顺时针或逆时针)。 其中旋转角度和方向的计算需要通过向量的计算来获取，本文不再展开，感兴趣的同学可以查看这里。<br><img src="http://7xrvqo.com1.z0.glb.clouddn.com/images/gesture_detection_in_html5/2362670-67c864158c19a169.671c66c2.png" alt="原图 by qianduan"><br>首先，需要获取向量的旋转方向和角度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">	//这两个方法属于向量计算，具体原理请阅读本文最后的参考文献</div><div class="line">_getRotateDirection(vector1,vector2) &#123;</div><div class="line">  return vector1.x * vector2.y - vector2.x * vector1.y;</div><div class="line">&#125;  </div><div class="line">_getRotateAngle(vector1,vector2) &#123;</div><div class="line">  let direction = this._getRotateDirection(vector1,vector2);</div><div class="line">  direction = direction &gt; 0 ? -1 : 1;</div><div class="line">  let len1 = this._getDistance(vector1.x,vector1.y);</div><div class="line">  let len2 = this._getDistance(vector2.x,vector2.y);</div><div class="line">  let mr = len1 * len2;</div><div class="line">  if(mr === 0) return 0;</div><div class="line">  let dot = vector1.x * vector2.x + vector1.y * vector2.y;</div><div class="line">  let r = dot / mr;</div><div class="line">  if(r &gt; 1) r = 1;</div><div class="line">  if(r &lt; -1) r = -1;</div><div class="line">  return Math.acos(r) * direction * 180 / Math.PI;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后，我们在手指发生移动时，调用获取旋转方向和角度的方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">_onTouchStart(e) &#123;</div><div class="line">  ...  </div><div class="line">  if(e.touches.length &gt; 1) &#123;</div><div class="line">    this.touchVector = &#123;</div><div class="line">       x: point2.pageX - this.startX,</div><div class="line">       y: point2.pageY - this.startY</div><div class="line">     &#125;;</div><div class="line">  &#125;</div><div class="line">  ...</div><div class="line">&#125;</div><div class="line">_onTouchMove(e) &#123;</div><div class="line">  ...</div><div class="line">  if(this.touchVector) &#123;</div><div class="line">        let vector = &#123;</div><div class="line">          x: e.touches[1].pageX - e.touches[0].pageX,</div><div class="line">          y: e.touches[1].pageY - e.touches[0].pageY</div><div class="line">        &#125;;</div><div class="line">        let angle = this._getRotateAngle(vector,this.touchVector);</div><div class="line">        this._emitEvent(&apos;onRotate&apos;,&#123;</div><div class="line">          angle</div><div class="line">        &#125;);</div><div class="line">        this.touchVector.x = vector.x;</div><div class="line">        this.touchVector.y = vector.y;</div><div class="line">      &#125;</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<a href="https://github.com/eeandrew/gestures" title="github" target="_blank" rel="external">源码</a>
+<a href="http://eeandrew.github.io/demos/gestures/index.html" title="demo" target="_blank" rel="external">在线demo</a>
 
         
         </div>
@@ -316,7 +278,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/13/about-pjax/" data-id="cirzpz9ca0001u8vbnawajivd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/18/about-touch/" data-id="cirzpz9ce0004u8vbc1rex2f5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -384,7 +346,7 @@
 
             
     
-        <a href="http://yoursite.com/2016/08/13/about-pjax/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/13/about-pjax/">Comments</a>
+        <a href="http://yoursite.com/2016/08/18/about-touch/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/18/about-touch/">Comments</a>
     
 
         </footer>
@@ -393,19 +355,10 @@
         
 <nav id="article-nav">
     
-        <a href="/2016/08/13/img-lazy-load/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    说到加载图片，我们可以谈些什么
-                
-            </div>
-        </a>
     
-    
-        <a href="/2016/08/12/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2016/08/17/about-web/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">我的博客搭建好了</div>
+            <div class="article-nav-title">101种让你网站更棒的方法</div>
         </a>
     
 </nav>
@@ -419,7 +372,7 @@
     <section id="comments">
     
         
-    <div class="ds-thread" data-thread-key="2016/08/13/about-pjax/" data-title="pjax: 当ajax遇上pushState" data-url="http://yoursite.com/2016/08/13/about-pjax/"></div>
+    <div class="ds-thread" data-thread-key="2016/08/18/about-touch/" data-title="HTML5手势检测和原理" data-url="http://yoursite.com/2016/08/18/about-touch/"></div>
     <style>
         #ds-thread #ds-reset .ds-textarea-wrapper {
             background: none;

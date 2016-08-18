@@ -156,7 +156,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                12
+                13
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -209,6 +209,151 @@
 
             
             <section id="main">
+    <article id="post-about-form" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/08/18/about-form/">关于From表单及常用的一些正则</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/18/about-form/">
+            <time datetime="2016-08-18T09:24:00.000Z" itemprop="datePublished">2016-08-18</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Study/">Study</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/css/">css</a>, <a class="tag-link" href="/tags/html/">html</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>最近在做手机页面时，遇到数字输入的键盘的问题，之前的做法只是一刀切的使用 type=”tel”，不过一直觉得九宫格的电话号码键盘上的英文字母太碍事了。于是想要尝试其它的实现方案，最终的结论却令人沮丧。不过也趁机详细了解了下pattern这个属性。</p>
+<p>type=”tel” 和 type=”number” 的区别</p>
+<p>这里还是先那么先交代一下最初遇到的问题。其实无论是tel还是number都不是完美的：</p>
+<p>type=”tel”<br>优点是iOS和Android的键盘表现都差不多<br>缺点是那些字母好多余，虽然我没有强迫症但还是感觉怪怪的啊。<br>type=”number”<br>优点是Android下实现的一个真正的数字键盘<br>缺点一：iOS下不是九宫格键盘，输入不方便<br>缺点二：旧版Android（包括微信所用的X5内核）在输入框后面会有超级鸡肋的小尾巴，好在Android 4.4.4以后给去掉了。<br>不过对于缺点二，我们可以用webkit私有的伪元素给fix掉：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">input[type=number]::-webkit-inner-spin-button,  </div><div class="line">   input[type=number]::-webkit-outer-spin-button &#123; </div><div class="line">       -webkit-appearance: none; </div><div class="line">       appearance: none; </div><div class="line">       margin: 0; </div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>pattern属性<br>pattern用于验证表单输入的内容，通常HTML5的type属性，比如email、tel、number、data类、url等，已经自带了简单的数据格式验证功能了，加上pattern后，前端部分的验证更加简单高效了。</p>
+<p>显而易见，pattern的属性值要用正则表达式。</p>
+<p>实例</p>
+<p>简单的数字验证</p>
+<p>数字的验证有两个：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;number&quot; pattern=&quot;\d&quot;&gt;  </div><div class="line">&lt;input type=&quot;number&quot; pattern=&quot;[0-9]*&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>对表单验证来说，这两个正则的作用是一样的，表现的话差异就很大：</p>
+<p>iOS中，只有[0-9]*才可以调起九宫格数字键盘，\d 无效<br>Android 4.4以下(包括X5内核)，两者都调起数字键盘；<br>Android 4.4.4以上，只认 type 属性，也就是说，如果上面的代码将 type=”number” 改为 type=”text” ，将调起全键盘而不会是九宫格数字键盘。<br>常用的正则表达式</p>
+<p>pattern的用法都一样，这里不再啰嗦各种详细写法了，只是列出来一些常用的正则就好了：</p>
+<p>信用卡 [0-9]{13,16}<br>银联卡 ^62[0-5]\d{13,16}$<br>Visa: ^4[0-9]{12}(?:[0-9]{3})?$<br>万事达：^5[1-5][0-9]{14}$<br>QQ号码： [1-9][0-9]{4,14}<br>手机号码：^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$<br>身份证：^([0-9]){7,18}(x|X)?$<br>密码：^[a-zA-Z]\w{5,17}$ 字母开头，长度在6~18之间，只能包含字母、数字和下划线<br>强密码：^(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,10}$ 包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间<br>7个汉字或14个字符：^[\u4e00-\u9fa5]{1,7}$|^[\dA-Za-z_]{1,14}$<br>浏览器支持<br>很不幸，pattern的浏览器支持很惨：<br><a href="http://caniuse.com/#feat=input-pattern" title="via" target="_blank" rel="external">Can I Use</a></p>
+<p>但是如果只是如文章开头提到的改数字键盘的话，iOS和Android都是没有问题的。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/08/18/about-form/" data-id="cis0440jf0000wcvbrjt0xqds" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/18/about-form/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/18/about-form/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-about-touch" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -264,7 +409,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/18/about-touch/" data-id="cirzpz9ce0004u8vbc1rex2f5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/18/about-touch/" data-id="cis0440js0008wcvbpoaeq3iz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -397,7 +542,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/17/about-web/" data-id="cirzpz9cg0005u8vbe45lgb5k" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/17/about-web/" data-id="cis0440ju000bwcvba7emvk17" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -530,7 +675,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/16/js/" data-id="cirzpz9d1000wu8vb4j6gusgf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/16/js/" data-id="cis0440kg0013wcvb3rcnmm48" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -664,7 +809,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/16/html-design/" data-id="cirzpz9cs000ju8vbefxdoeqw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/16/html-design/" data-id="cis0440k8000swcvbmzis4z2y" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -799,7 +944,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/15/css3/" data-id="cirzpz9cl0009u8vb68xolhol" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/15/css3/" data-id="cis0440k0000fwcvbvavp4h9b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -933,7 +1078,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/15/h5-swiper/" data-id="cirzpz9cn000bu8vbn2p5w4qo" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/15/h5-swiper/" data-id="cis0440k3000kwcvbvywb0nop" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1066,7 +1211,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/15/about-mobile/" data-id="cirzpz9c60000u8vbkiry6olq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/15/about-mobile/" data-id="cis0440jr0006wcvbgqzhuaxf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1199,7 +1344,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/15/about-wx/" data-id="cirzpz9cj0007u8vbfvpmndln" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/15/about-wx/" data-id="cis0440jx000dwcvb84aow01v" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1333,7 +1478,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/13/jquery-loading/" data-id="cirzpz9cx000ru8vbzhkrctos" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/13/jquery-loading/" data-id="cis0440k9000vwcvb9jvdz1el" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1411,142 +1556,6 @@
 
 
 
-    <article id="post-img-lazy-load" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/08/13/img-lazy-load/">说到加载图片，我们可以谈些什么</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/08/13/img-lazy-load/">
-            <time datetime="2016-08-13T03:54:00.000Z" itemprop="datePublished">2016-08-13</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/个人/">个人</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/js/">js</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p><img src="/assets/blogImg/lazyload.jpg" alt="原图 by Denis Perepelenko">    </p>
-<p>其实，一开始让我在网页中加载一张图片，我是，是拒绝的…因为实在太简单了。</p>
-<p><code>&lt;img src=&quot;xx.jpg&quot; /&gt;</code>是每个前端开发都会的技能。然而，如果你想做到极致，事情还没有这么简单。</p>
-<p>最近实现了个图片加载器，用于大型web前端项目中，关于加载图片这一话题，仔细想来可以加许多的特技。</p></p>
-            <p class="article-more-link">
-                <a href="/2016/08/13/img-lazy-load/#more">Read More</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2016/08/13/img-lazy-load/" data-id="cirzpz9cu000ou8vbxa4ju5hz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2016/08/13/img-lazy-load/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/13/img-lazy-load/">Comments</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <nav id="page-nav">
         <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
@@ -1559,6 +1568,25 @@
         <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/18/about-form/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/879f9e736075a5fbf3b9efd3d1b82e881e27482811d64-JppchS_fw658)" alt="关于From表单及常用的一些正则" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study/">Study</a></p>
+                            <p class="item-title"><a href="/2016/08/18/about-form/" class="title">关于From表单及常用的一些正则</a></p>
+                            <p class="item-date"><time datetime="2016-08-18T09:24:00.000Z" itemprop="datePublished">2016-08-18</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -1636,25 +1664,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/08/15/css3/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://hbimg.b0.upaiyun.com/2b70973976c5e3ffc26140fda2791fd6fc0deeb113e10-5TvBJg_fw658)" alt="css3动效进阶" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Study/">Study</a></p>
-                            <p class="item-title"><a href="/2016/08/15/css3/" class="title">css3动效进阶</a></p>
-                            <p class="item-date"><time datetime="2016-08-15T06:55:00.000Z" itemprop="datePublished">2016-08-15</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1664,7 +1673,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Study/">Study</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人/">个人</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/经验/">经验</a><span class="category-list-count">3</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Study/">Study</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人/">个人</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/经验/">经验</a><span class="category-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -1673,7 +1682,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">12</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">13</span></li></ul>
         </div>
     </div>
 
@@ -1682,7 +1691,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ui/">ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ui/">ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1691,7 +1700,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/html/" style="font-size: 20px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ui/" style="font-size: 10px;">ui</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+            <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/html/" style="font-size: 20px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ui/" style="font-size: 10px;">ui</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
         </div>
     </div>
 

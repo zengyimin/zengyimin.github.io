@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>React 开发一款简单的赛车游戏 | Fifteen的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="最近研究egret引擎时，在论坛看到了用egret引擎写的一款赛车游戏">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React 开发一款简单的赛车游戏">
+<meta property="og:url" content="http://yoursite.com/2016/08/20/about-react/index.html">
+<meta property="og:site_name" content="Fifteen的博客">
+<meta property="og:description" content="最近研究egret引擎时，在论坛看到了用egret引擎写的一款赛车游戏">
+<meta property="og:image" content="http://hbimg.b0.upaiyun.com/6c56bfb1e861864446283f5d847ab0189b810bd47302-Vmf6q1_fw658">
+<meta property="og:updated_time" content="2016-08-20T09:11:30.154Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React 开发一款简单的赛车游戏">
+<meta name="twitter:description" content="最近研究egret引擎时，在论坛看到了用egret引擎写的一款赛车游戏">
+<meta name="twitter:image" content="http://hbimg.b0.upaiyun.com/6c56bfb1e861864446283f5d847ab0189b810bd47302-Vmf6q1_fw658">
+    
+
+    
+        <link rel="alternate" href="/" title="Fifteen的博客" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+    
+    
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Fifteen的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">所有文章</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+                    <a class="main-nav-link" href="/share">分享</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/litten.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">所有文章</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                    <td><a class="main-nav-link" href="/share">分享</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/litten.png" />
+            <h2 id="name">mandy的帅气男盆友</h2>
+            <h3 id="title">前端攻城狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>湖北</span>
+            <a id="follow" target="_blank" href="https://zengyimin.github.io/">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                17
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                11
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/zengyimin" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-about-react" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            React 开发一款简单的赛车游戏
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/20/about-react/">
+            <time datetime="2016-08-20T09:02:00.000Z" itemprop="datePublished">2016-08-20</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Study/">Study</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/js/">js</a>, <a class="tag-link" href="/tags/react/">react</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>最近研究egret引擎时，在论坛看到了用egret引擎写的一款赛车游戏</p>
+<p><img src="http://77flwk.com1.z0.glb.clouddn.com/cargame.png" alt="游戏截图"></p>
+<a id="more"></a>
+<p>玩法很简单，左右控制赛车躲避来车，碰撞即游戏失败</p>
+<p>下面将为大家一步步讲解，如何用React写出一款纯 javascript+css 的小游戏</p>
+<p>准备工作<br>本教程使用 React 0.14 版本</p>
+<p>一、React基本结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;script src=&quot;../build/react.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;../build/react-dom.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;../build/browser.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id=&quot;reactGame&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">     // ** code **</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>可以看到 html 代码非常简单，我们只留了一个<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;reactGame&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>作为React渲染后插入的节点，所有的代码均写在JS中。<br>大家注意到 script 标签的 type 为 text/babel ，由 于React 使用 JSX 语法，browser.min.js 用于将 JSX 语法转化为 javascript 语法。<br>二、创建第一个React组件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">var GameBoard = React.createClass(&#123;</div><div class="line">    getInitialState : function()&#123;</div><div class="line">        return &#123;</div><div class="line">            gameState : 0</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    render : function()&#123;</div><div class="line">        return &lt;div className=&quot;board&quot;&gt;</div><div class="line">            &lt;div className=&quot;roadbed&quot;&gt;&lt;/div&gt;</div><div class="line">            &lt;div className=&quot;road&quot;&#125;&gt;</div><div class="line">                &lt;div className=&quot;hero&quot;&gt;&lt;/div&gt;</div><div class="line">                &lt;div className=&quot;enemy&quot;&gt;&lt;/div&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;span className=&quot;start&quot;&gt;&lt;/span&gt;</div><div class="line">            &lt;span className=&quot;kilo&quot;&gt;&lt;/span&gt;</div><div class="line">            &lt;div className=&quot;failbub&quot;&gt;</div><div class="line">                &lt;span className=&quot;failtext&quot;&gt;&lt;/span&gt;</div><div class="line">                &lt;span className=&quot;retry&quot;&gt;&lt;/span&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">ReactDOM.render(&lt;GameBoard/&gt;,document.getElementById(&quot;reactGame&quot;));</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>我们通过样式创建了一个基础的游戏界面：游戏容器 [board]，路面 [roadbed]，路面范围 [road]，主角车 [hero]，敌车 [enemy]，还有公里板 [kilo]，失败提示 [failbub]</p>
+<p>我们创建了一个 GameBoard 的组件，用于建立整个游戏场景，你也可以建立多个子组件，比如主角赛车，敌方赛车，公里板，再在 Gameboard 中引入子组件。</p>
+<p>本教程案例相对简单，我们只创建一个组件，也能更容易理解代码逻辑。</p>
+<p>React 自带了一些事件处理函数，如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">getInitialState()    //组件初始化数据</div><div class="line">componentWillMount() //组件渲染前调用</div><div class="line">componentDidMount()  //组件渲染后调用</div><div class="line">render()             //组件渲染</div></pre></td></tr></table></figure></p>
+<p>而 render 函数中，将返回我们页面所有的 html 结构</p>
+<p>下面我们用一个简单的例子帮助大家理解 React 的工作流程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"> &lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">var GameBoard = React.createClass(&#123;</div><div class="line">    getInitialState : function()&#123;</div><div class="line">        return &#123;</div><div class="line">            gameState : 0</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    gameStart : function()&#123;</div><div class="line">        this.setState(&#123;</div><div class="line">            gameState : 1</div><div class="line">        &#125;)</div><div class="line">    &#125;,</div><div class="line">    render : function()&#123;</div><div class="line">        return  &lt;span className = &#123;this.state.gameState==0?&quot;start&quot;:&quot;start hide&quot;&#125; onClick = &#123;this.gameStart&#125;&gt;&lt;/span&gt;</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">ReactDOM.render(&lt;GameBoard/&gt;,document.getElementById(&quot;reactGame&quot;));</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>在上面的例子中，我们在 getInitialState 函数中初始化了 state.gameState:0，在 render 函数中，我们对 div 的 className 做了一个三元表达式的判断，如果 gameState 为0，表示游戏未开始，渲染出的 html 结构为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;span class=&quot;start&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>我们声明一个自定义的方法 gameStart ，在开始按钮上绑定 onClick 事件，调用 gameState，执行了 setState 方法，将 state 对象中的 gameState 设置为1，由于调用了 setState ，render 函数立即更新，此时 gameState 值为1，渲染出的 html 结构为（开始按钮隐藏）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;span class=&quot;start hide&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>简单来说，React 有个全局的状态 state，我们通过 setState 去改变 state 对象的值，一旦执行了 setState，React 立即触发 render 函数，通过内部的 diff 算法，判断当前 DOM 是否发生改变，<br>改变即更新到真实 DOM 中。</p>
+<p>三、游戏开始！<br>现在我们开始让游戏跑起来，为了避免频繁的操作 DOM 结点影响性能，所有动态效果均由 css3 实现。</p>
+<p>第一步：马路移动</p>
+<p>首先我们对游戏的动画效果进行分析，小车固定在屏幕底部，所以我们制作一个马路向下运动的循环动画，看起来就像小车在向上跑<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">.roadbed&#123;</div><div class="line">    background:url(../resource/road.png) repeat-y;</div><div class="line">    width:480px;</div><div class="line">    height:1600px;</div><div class="line">    position:absolute;</div><div class="line">    left:0;</div><div class="line">    top:-800px;</div><div class="line">&#125;</div><div class="line">.roadRun&#123;</div><div class="line">    -webkit-transform:translateZ(0);</div><div class="line">    -webkit-animation:roadRun 1.2s linear infinite;</div><div class="line">&#125;</div><div class="line">@-webkit-keyframes roadRun&#123;</div><div class="line">    100%&#123; -webkit-transform:translateY(800px);&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们也可以使用 background-position 动画，但使用 transform 动画更加流畅。</p>
+<p>第二步：控制小车移动</p>
+<p>我们通过控制键盘的左右方向键来控制赛车的左右位置，当按下左方向键，我们给 hero 节点加上 left ，按下右方向键，加上 right ，在 css 中控制 hero.left 和 hero.right 的位置</p>
+<p>在 render 渲染后，我们调用 componentDidMount 方法为游戏注册一个键盘事件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">var GameBoard = React.createClass(&#123;</div><div class="line">    getInitialState : function()&#123;</div><div class="line">        return &#123;</div><div class="line">            gameState : 0,</div><div class="line">            heroLoc : 0,</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    gameStart : function()&#123;</div><div class="line">        this.setState(&#123;</div><div class="line">            gameState : 1</div><div class="line">        &#125;)</div><div class="line">    &#125;,</div><div class="line">    gameHandle : function(e)&#123;</div><div class="line">        if(this.state.gameState ==1)&#123;</div><div class="line">            switch(e.keyCode)&#123;</div><div class="line">                case 37:</div><div class="line">                    this.setState(&#123;heroLoc : 0&#125;);</div><div class="line">                    break;</div><div class="line">                case 39:</div><div class="line">                    this.setState(&#123;heroLoc : 1&#125;);</div><div class="line">                    break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    componentDidMount:function()&#123;</div><div class="line">        window.addEventListener(&quot;keydown&quot;, this.gameHandle, false);</div><div class="line">    &#125;,</div><div class="line">    render : function()&#123;</div><div class="line">        var state = this.state;</div><div class="line">        return &lt;div className=&quot;board&quot;&gt;</div><div class="line">            &lt;div className=&quot;roadbed&quot;&gt;&lt;/div&gt;</div><div class="line">            &lt;div className=&quot;road&quot;&#125;&gt;</div><div class="line">                &lt;div className=&#123;state.heroLoc==0?&quot;hero left&quot;:&quot;hero right&quot;&#125;&gt;&lt;/div&gt;</div><div class="line">                &lt;div className=&quot;enemy&quot;&gt;&lt;/div&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;span className=&quot;start&quot;&gt;&lt;/span&gt;</div><div class="line">            &lt;span className=&quot;kilo&quot;&gt;&lt;/span&gt;</div><div class="line">            &lt;div className=&quot;failbub&quot;&gt;</div><div class="line">                &lt;span className=&quot;failtext&quot;&gt;&lt;/span&gt;</div><div class="line">                &lt;span className=&quot;retry&quot;&gt;&lt;/span&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;span className = &#123;state.gameState==0?&quot;start&quot;:&quot;start hide&quot;&#125; onClick = &#123;this.gameStart&#125;&gt;&lt;/span&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">ReactDOM.render(&lt;GameBoard/&gt;,document.getElementById(&quot;reactGame&quot;));</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>为 componentDidMount 注册监听了键盘事件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">componentDidMount:function()&#123;</div><div class="line">       window.addEventListener(&quot;keydown&quot;, this.gameHandle, false);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当按下键盘按键后，调用 gameHandle 方法，判断按键 keyCode ，如果按下了左方向键（keyCode:37），则设置 heroLoc:0,<br>按下右方向键（keyCode:39），设置 heroLoc:1，render 方法再次更新，判断 heroLoc 值，如果 heroLoc == 0，则主角结构为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;hero left&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>heroLoc == 1 则结构为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;hero right&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>至此，我们完成了小车的基本移动操作</p>
+<p>第三步：创建敌人赛车</p>
+<p>敌方车辆与主角运动方向一致，都是向上运动，由于主角相对固定，速度又比敌方车辆块，所以 enemy 的运动方向实际是向下运动，直至消失在屏幕之外<br>为了降低复杂度，我们规定屏幕上每次只会出现一辆敌方车辆，方向随机，所以我们只需一个div作为敌方小车，在小车运动离开屏幕后，马上随机给小车换上不同的车型和方向的 class。<br>我们给 enemy 加上从0到1000px的运动动画,运动持续时间1s<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.enemy&#123; -webkit-animation:enemy 1s linear; &#125;</div><div class="line">@-webkit-keyframes enemy&#123;</div><div class="line">    100%&#123; -webkit-transform:translateY(1000px);&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>javascript部分<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">var GameBoard = React.createClass(&#123;</div><div class="line">    getInitialState : function()&#123;</div><div class="line">        return &#123;</div><div class="line">            gameState : 0,</div><div class="line">            heroLoc : 0,</div><div class="line">            enemyLoc: 0,</div><div class="line">            enemyType : 0,</div><div class="line">            aniEnd : true,</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    gameStart : function()&#123;</div><div class="line">        this.setState(&#123;</div><div class="line">            gameState : 1</div><div class="line">        &#125;);</div><div class="line">        createEnemy();</div><div class="line">    &#125;,</div><div class="line">    gameHandle : function(e)&#123;</div><div class="line">        if(this.state.gameState ==1)&#123;</div><div class="line">            switch(e.keyCode)&#123;</div><div class="line">                case 37:</div><div class="line">                    this.setState(&#123;heroLoc : 0&#125;);</div><div class="line">                    break;</div><div class="line">                case 39:</div><div class="line">                    this.setState(&#123;heroLoc : 1&#125;);</div><div class="line">                    break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    createEnemy : function()&#123;</div><div class="line">        var that = this,</div><div class="line">        var enemyClass,enemyLoc,enemyType,</div><div class="line">              animationEnd = true;</div><div class="line">        setInterval(function()&#123;</div><div class="line">            if(that.state.aniEnd &amp;&amp; that.state.gameState == 1)&#123;</div><div class="line">                that.setState(&#123;aniEnd : false&#125;);</div><div class="line">                enemyType = Math.floor(Math.random()*3);</div><div class="line">                enemyLoc = Math.round(Math.random());</div><div class="line">                that.setState(&#123;enemyLoc : enemyLoc&#125;);</div><div class="line">                that.setState(&#123;enemyType : enemyType&#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;,1000);</div><div class="line">        that.refs.enemy.addEventListener(&quot;webkitAnimationEnd&quot;,function()&#123;</div><div class="line">            that.setState(&#123;aniEnd : true&#125;);</div><div class="line">        &#125;);</div><div class="line">    &#125;,</div><div class="line">    componentDidMount:function()&#123;</div><div class="line">        window.addEventListener(&quot;keydown&quot;, this.gameHandle, false);</div><div class="line">    &#125;,</div><div class="line">    render : function()&#123;</div><div class="line">        var state = this.state;</div><div class="line">        var enemyCls = state.gameStart == 0 ?&quot;enemy&quot;:(&quot;enemy enemy&quot;+ state.enemyType  + &quot; loc&quot; + state.enemyLoc);</div><div class="line">        return &lt;div className=&quot;board&quot;&gt;</div><div class="line">            &lt;div className=&quot;roadbed&quot;&gt;&lt;/div&gt;</div><div class="line">            &lt;div className=&quot;road&quot;&#125;&gt;</div><div class="line">                &lt;div className=&#123;state.heroLoc==0?&quot;hero left&quot;:&quot;hero right&quot;&#125;&gt;&lt;/div&gt;</div><div class="line">                &lt;div className=&#123;enemyCls&#125;&gt;&lt;/div&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;span className=&quot;start&quot;&gt;&lt;/span&gt;</div><div class="line">            &lt;span className=&quot;kilo&quot;&gt;&lt;/span&gt;</div><div class="line">            &lt;div className=&quot;failbub&quot;&gt;</div><div class="line">                &lt;span className=&quot;failtext&quot;&gt;&lt;/span&gt;</div><div class="line">                &lt;span className=&quot;retry&quot;&gt;&lt;/span&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;span className = &#123;state.gameState==0?&quot;start&quot;:&quot;start hide&quot;&#125; onClick = &#123;this.gameStart&#125;&gt;&lt;/span&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">ReactDOM.render(&lt;GameBoard/&gt;,document.getElementById(&quot;reactGame&quot;));</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>游戏开始后，调用 createEnemy，每隔1s并确保动画执行完毕后，重新为 enemy 设置随机的方向和车型。<br>至此，我们已经完成马路的运动，主角的控制和敌方的创建。</p>
+<p>第四步：碰撞检测</p>
+<p>游戏已经成功跑起来了，但仅仅是一些控制操作和效果动画的运行，并没有核心的游戏逻辑，下面我们加入游戏的核心逻辑，碰撞检测<br>如何判断主角与敌方小车碰撞到一起了？其实思路很简单，我方小车与敌方小车位于同一车道，且敌方小车的运动距离大于舞台高度-我方小车高度，即两车相撞</p>
+<p>这个值我们计算出来写死就行，也可以通过 javascript 计算。</p>
+<p>大家都知道，大部分游戏都需要一个不断刷新的定时器实时获取和更新状态，即游戏刷新频率（正常为60HZ）<br>所以我们设置一个定时器 Tick，来实时获取敌方小车与我方小车的方向与位置数据，判断小车是否相撞<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">var Tick;</div><div class="line">var GameBoard = React.createClass(&#123;</div><div class="line">    getInitialState : function()&#123;</div><div class="line">        return &#123;</div><div class="line">            gameState : 0,</div><div class="line">            heroLoc : 0,</div><div class="line">            enemyLoc: 0,</div><div class="line">            enemyType : 0,</div><div class="line">            aniEnd : true,</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    gameStart : function()&#123;</div><div class="line">        this.setState(&#123;</div><div class="line">            gameState : 1</div><div class="line">        &#125;);</div><div class="line">        createEnemy();</div><div class="line">        this.gameTick();</div><div class="line">    &#125;,</div><div class="line">    gameHandle : function(e)&#123;</div><div class="line">        if(this.state.gameState ==1)&#123;</div><div class="line">            switch(e.keyCode)&#123;</div><div class="line">                case 37:</div><div class="line">                    this.setState(&#123;heroLoc : 0&#125;);</div><div class="line">                    break;</div><div class="line">                case 39:</div><div class="line">                    this.setState(&#123;heroLoc : 1&#125;);</div><div class="line">                    break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    createEnemy : function()&#123;</div><div class="line">        var that = this,</div><div class="line">        var enemyClass,enemyLoc,enemyType,</div><div class="line">              animationEnd = true;</div><div class="line">        setInterval(function()&#123;</div><div class="line">            if(that.state.aniEnd &amp;&amp; that.state.gameState == 1)&#123;</div><div class="line">                that.setState(&#123;aniEnd : false&#125;);</div><div class="line">                enemyType = Math.floor(Math.random()*3);</div><div class="line">                enemyLoc = Math.round(Math.random());</div><div class="line">                that.setState(&#123;enemyLoc : enemyLoc&#125;);</div><div class="line">                that.setState(&#123;enemyType : enemyType&#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;,1000);</div><div class="line">        that.refs.enemy.addEventListener(&quot;webkitAnimationEnd&quot;,function()&#123;</div><div class="line">            that.setState(&#123;aniEnd : true&#125;);</div><div class="line">        &#125;);</div><div class="line">    &#125;,</div><div class="line">    gameTick : function(state)&#123;</div><div class="line">        var that = this,</div><div class="line">            crash = 620,</div><div class="line">            heroLoc,enemyLoc,trs,dis,kilometer = 0;</div><div class="line">        if(state)&#123;</div><div class="line">            Tick = setInterval(function()&#123;</div><div class="line">                trs = window.getComputedStyle(that.refs.enemy,null).getPropertyValue(&quot;transform&quot;);</div><div class="line">                dis = trs.split(&quot;,&quot;)[5].replace(&quot;)&quot;,&quot;&quot;);</div><div class="line">                heroLoc = that.state.heroLoc;</div><div class="line">                enemyLoc = that.state.enemyLoc;</div><div class="line">                if(dis&gt;crash &amp;&amp;dis&lt;(crash+220) &amp;&amp; heroLoc == enemyLoc)&#123;</div><div class="line">                    that.gameOver();</div><div class="line">                &#125;</div><div class="line">                kilometer ++;</div><div class="line">                that.setState(&#123;kilometer:kilometer&#125;);</div><div class="line">            &#125;,10);</div><div class="line">        &#125;else&#123;</div><div class="line">            clearInterval(Tick);</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    gameOver : function()&#123;</div><div class="line">        this.setState(&#123;gameState : 0&#125;);</div><div class="line">        this.gameTick(false);</div><div class="line">    &#125;,</div><div class="line">    componentDidMount:function()&#123;</div><div class="line">        window.addEventListener(&quot;keydown&quot;, this.gameHandle, false);</div><div class="line">    &#125;,</div><div class="line">    render : function()&#123;</div><div class="line">        var state = this.state;</div><div class="line">        var enemyCls = state.gameStart == 0 ?&quot;enemy&quot;:(&quot;enemy enemy&quot;+ state.enemyType  + &quot; loc&quot; + state.enemyLoc);</div><div class="line">        return &lt;div className=&quot;board&quot;&gt;</div><div class="line">            &lt;div className=&quot;roadbed&quot;&gt;&lt;/div&gt;</div><div class="line">            &lt;div className=&quot;road&quot;&#125;&gt;</div><div class="line">                &lt;div className=&#123;state.heroLoc==0?&quot;hero left&quot;:&quot;hero right&quot;&#125;&gt;&lt;/div&gt;</div><div class="line">                &lt;div className=&#123;enemyCls&#125;&gt;&lt;/div&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;span className=&quot;start&quot;&gt;&lt;/span&gt;</div><div class="line">            &lt;span className=&quot;kilo&quot;&gt;&#123;state.kilometer&#125;&lt;/span&gt;</div><div class="line">            &lt;div className=&quot;failbub&quot;&gt;</div><div class="line">                &lt;span className=&quot;failtext&quot;&gt;&lt;/span&gt;</div><div class="line">                &lt;span className=&quot;retry&quot;&gt;&lt;/span&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;span className = &#123;state.gameState==0?&quot;start&quot;:&quot;start hide&quot;&#125; onClick = &#123;this.gameStart&#125;&gt;&lt;/span&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">ReactDOM.render(&lt;GameBoard/&gt;,document.getElementById(&quot;reactGame&quot;));</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>这里我们顺便把公里数实时更新<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;span className=&quot;kilo&quot;&gt;&#123;state.kilometer&#125;&lt;/span&gt;</div></pre></td></tr></table></figure></p>
+<p>至此，我们已经完成了一个相对完整的小游戏</p>
+<p>四、更多细节<br>游戏仅仅是可玩远远不够，我们可以慢慢加入一些细节提高游戏性，比如让敌方车辆的速度随机，出现的频率随游戏难度增加，<br>每跑1000km获得一次无敌模式，开启后5s内可以随意碰撞：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/babel&quot;&gt;</div><div class="line">var Tick;</div><div class="line">var GameBoard = React.createClass(&#123;</div><div class="line">    getInitialState : function()&#123;</div><div class="line">        return &#123;</div><div class="line">            gameState : 0,</div><div class="line">            heroLoc : 0,</div><div class="line">            enemyLoc: 0,</div><div class="line">            enemyType : 0,</div><div class="line">            aniEnd : true,</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    gameStart : function()&#123;</div><div class="line">        this.setState(&#123;</div><div class="line">            gameState : 1</div><div class="line">        &#125;);</div><div class="line">        createEnemy();</div><div class="line">        this.gameTick();</div><div class="line">    &#125;,</div><div class="line">    gameHandle : function(e)&#123;</div><div class="line">        if(this.state.gameState ==1)&#123;</div><div class="line">            switch(e.keyCode)&#123;</div><div class="line">                case 37:</div><div class="line">                    this.setState(&#123;heroLoc : 0&#125;);</div><div class="line">                    break;</div><div class="line">                case 39:</div><div class="line">                    this.setState(&#123;heroLoc : 1&#125;);</div><div class="line">                    break;</div><div class="line">                case 32:</div><div class="line">                    if(this.state.hasSuper==1)&#123;</div><div class="line">                        this.setState(&#123;superMode : 1&#125;);</div><div class="line">                        this.setState(&#123;hasSuper : 0&#125;);</div><div class="line">                    &#125;</div><div class="line">                    break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    superBuff : function()&#123;</div><div class="line">        var that = this;</div><div class="line">        that.setState(&#123;chunge : 1&#125;);</div><div class="line">        setTimeout(function()&#123;</div><div class="line">            that.setState(&#123;chunge : 0&#125;);</div><div class="line">        &#125;,1000);</div><div class="line">    &#125;,</div><div class="line">    superMode : function()&#123;</div><div class="line">        var that = this;</div><div class="line">        that.setState(&#123;hasSuper : 1&#125;);</div><div class="line">        setTimeout(function()&#123;</div><div class="line">            that.setState(&#123;superMode : 0&#125;);</div><div class="line">        &#125;,5000);</div><div class="line">    &#125;,</div><div class="line">    createEnemy : function()&#123;</div><div class="line">        var that = this,</div><div class="line">        var enemyClass,enemyLoc,enemyType,</div><div class="line">              animationEnd = true;</div><div class="line">        setInterval(function()&#123;</div><div class="line">            if(that.state.aniEnd &amp;&amp; that.state.gameState == 1)&#123;</div><div class="line">                that.setState(&#123;aniEnd : false&#125;);</div><div class="line">                enemyType = Math.floor(Math.random()*3);</div><div class="line">                enemyLoc = Math.round(Math.random());</div><div class="line">                that.setState(&#123;enemyLoc : enemyLoc&#125;);</div><div class="line">                that.setState(&#123;enemyType : enemyType&#125;);</div><div class="line">            &#125;</div><div class="line">        &#125;,1000);</div><div class="line">        that.refs.enemy.addEventListener(&quot;webkitAnimationEnd&quot;,function()&#123;</div><div class="line">            that.setState(&#123;aniEnd : true&#125;);</div><div class="line">        &#125;);</div><div class="line">    &#125;,</div><div class="line">    gameTick : function(state)&#123;</div><div class="line">        var that = this,</div><div class="line">            crash = 620,</div><div class="line">            heroLoc,enemyLoc,trs,dis,kilometer = 0;</div><div class="line">        if(state)&#123;</div><div class="line">            Tick = setInterval(function()&#123;</div><div class="line">                trs = window.getComputedStyle(that.refs.enemy,null).getPropertyValue(&quot;transform&quot;);</div><div class="line">                dis = trs.split(&quot;,&quot;)[5].replace(&quot;)&quot;,&quot;&quot;);</div><div class="line">                heroLoc = that.state.heroLoc;</div><div class="line">                enemyLoc = that.state.enemyLoc;</div><div class="line">                if(dis&gt;crash &amp;&amp;dis&lt;(crash+220) &amp;&amp; heroLoc == enemyLoc)&#123;</div><div class="line">                    that.gameOver();</div><div class="line">                &#125;</div><div class="line">                kilometer ++;</div><div class="line">                that.setState(&#123;kilometer:kilometer&#125;);</div><div class="line">                if(kilometer%1000==0)&#123;</div><div class="line">                    that.superMode();</div><div class="line">                &#125;</div><div class="line">            &#125;,10);</div><div class="line">        &#125;else&#123;</div><div class="line">            clearInterval(Tick);</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    gameOver : function()&#123;</div><div class="line">        this.setState(&#123;gameState : 0&#125;);</div><div class="line">        this.gameTick(false);</div><div class="line">    &#125;,</div><div class="line">    componentDidMount:function()&#123;</div><div class="line">        window.addEventListener(&quot;keydown&quot;, this.gameHandle, false);</div><div class="line">    &#125;,</div><div class="line">    render : function()&#123;</div><div class="line">        var state = this.state;</div><div class="line">        var enemyCls = state.gameStart == 0 ?&quot;enemy&quot;:(&quot;enemy enemy&quot;+ state.enemyType  + &quot; loc&quot; + state.enemyLoc);</div><div class="line">        return &lt;div className=&quot;board&quot;&gt;</div><div class="line">            &lt;div className=&quot;roadbed&quot;&gt;&lt;/div&gt;</div><div class="line">            &lt;div className=&quot;road&quot;&#125;&gt;</div><div class="line">                &lt;div className=&#123;state.heroLoc==0?&quot;hero left&quot;:&quot;hero right&quot;&#125;&gt;&lt;/div&gt;</div><div class="line">                &lt;div className=&#123;enemyCls&#125;&gt;&lt;/div&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;span className=&quot;start&quot;&gt;&lt;/span&gt;</div><div class="line">            &lt;span className=&quot;kilo&quot;&gt;&lt;/span&gt;</div><div class="line">            &lt;div className=&quot;failbub&quot;&gt;</div><div class="line">                &lt;span className=&quot;failtext&quot;&gt;&#123;state.kilometer&#125;&lt;/span&gt;</div><div class="line">                &lt;span className=&quot;retry&quot;&gt;&lt;/span&gt;</div><div class="line">            &lt;/div&gt;</div><div class="line">            &lt;span className = &#123;state.gameState==0?&quot;start&quot;:&quot;start hide&quot;&#125; onClick = &#123;this.gameStart&#125;&gt;&lt;/span&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">ReactDOM.render(&lt;GameBoard/&gt;,document.getElementById(&quot;reactGame&quot;));</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>最后加入重力感应，控制小车运动，让游戏在移动端解放双手：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">window.addEventListener(&quot;devicemotion&quot;, function(event) &#123;</div><div class="line">            var eventaccelerationIncludingGravity = event.accelerationIncludingGravity;</div><div class="line">            if(that.state.gameState == 1)&#123;</div><div class="line">                if(eventaccelerationIncludingGravity.x &lt; -1)&#123;</div><div class="line">                    that.setState(&#123;heroLoc : 0&#125;);</div><div class="line">                &#125;else if(eventaccelerationIncludingGravity.x &gt; 1)&#123;</div><div class="line">                    that.setState(&#123;heroLoc : 1&#125;);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">&#125;, false);</div></pre></td></tr></table></figure></p>
+<p>end.</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/08/20/about-react/" data-id="cis2yuamw0007z0vbwl9he1vj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/20/about-react/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/20/about-react/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2016/08/20/about-reg/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">知道这20个正则表达式，能让你少写1,000行代码</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2016/08/20/about-react/" data-title="React 开发一款简单的赛车游戏" data-url="http://yoursite.com/2016/08/20/about-react/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/20/about-react/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/6c56bfb1e861864446283f5d847ab0189b810bd47302-Vmf6q1_fw658)" alt="React 开发一款简单的赛车游戏" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study/">Study</a></p>
+                            <p class="item-title"><a href="/2016/08/20/about-react/" class="title">React 开发一款简单的赛车游戏</a></p>
+                            <p class="item-date"><time datetime="2016-08-20T09:02:00.000Z" itemprop="datePublished">2016-08-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/20/about-reg/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/1be3a4b585ac2551091712c43f6d5790cba332cb1f897-BOHcKE_fw658)" alt="知道这20个正则表达式，能让你少写1,000行代码" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/经验/">经验</a></p>
+                            <p class="item-title"><a href="/2016/08/20/about-reg/" class="title">知道这20个正则表达式，能让你少写1,000行代码</a></p>
+                            <p class="item-date"><time datetime="2016-08-20T06:24:00.000Z" itemprop="datePublished">2016-08-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/19/js-prototype/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/e54dcf0a66d15cf3ea5fadd7d1578df46886ac4f5f58-ziJd8f_fw658)" alt="js继承的那些事" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study/">Study</a></p>
+                            <p class="item-title"><a href="/2016/08/19/js-prototype/" class="title">js继承的那些事</a></p>
+                            <p class="item-date"><time datetime="2016-08-19T02:54:00.000Z" itemprop="datePublished">2016-08-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/18/about-form/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/879f9e736075a5fbf3b9efd3d1b82e881e27482811d64-JppchS_fw658)" alt="关于From表单及常用的一些正则" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study/">Study</a></p>
+                            <p class="item-title"><a href="/2016/08/18/about-form/" class="title">关于From表单及常用的一些正则</a></p>
+                            <p class="item-date"><time datetime="2016-08-18T09:24:00.000Z" itemprop="datePublished">2016-08-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/18/jquery-modle/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/2d6772da66cd283344e2fe2e9a40ee89f513f664e07b-RwJphx_fw658)" alt="jQuery开发模式" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study/">Study</a></p>
+                            <p class="item-title"><a href="/2016/08/18/jquery-modle/" class="title">jQuery开发模式</a></p>
+                            <p class="item-date"><time datetime="2016-08-18T08:24:00.000Z" itemprop="datePublished">2016-08-18</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Study/">Study</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人/">个人</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/经验/">经验</a><span class="category-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">17</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/regret/">regret</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ui/">ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/html/" style="font-size: 20px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/jquery/" style="font-size: 13.33px;">jquery</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/regret/" style="font-size: 10px;">regret</a> <a href="/tags/ui/" style="font-size: 10px;">ui</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2016 zengyimin<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'zengyimin'};
+    (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

@@ -3,29 +3,26 @@
 <head>
     <meta charset="utf-8">
     
-    <title>用简单的css实现下拉列表select框的默认样式 | Fifteen的博客</title>
+    <title>JSP初识（一） | Fifteen的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Mobile 和现代浏览器的解决方案
-下面是解决方案。
-我们看到默认的下载选择框在firefox和chrome中是有些不同的
-Chrome 和 Firefox 中分别是这样的：">
+    <meta name="description" content="已学完javaEE，对java的面向对象有了一些了解，但工作多以前端为主，故懈怠了一段时间，内心愧疚。所以趁着下班后的时间去充充电，从jsp开始学起吧。
+现在主流的两种应用模式开始学起：
+1.C/S 桌面应用程序：基于客户机/服务端，客户机桌面上诸如QQ，YY，谷歌浏览器等程序运行在客户机上的都是基于C/S的。2.B/S web应用程序：基于浏览器/服务端，顾名思义是运行在浏览器的web应用。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用简单的css实现下拉列表select框的默认样式">
-<meta property="og:url" content="http://yoursite.com/2016/08/23/about-select/index.html">
+<meta property="og:title" content="JSP初识（一）">
+<meta property="og:url" content="http://yoursite.com/2016/08/24/jsp-one/index.html">
 <meta property="og:site_name" content="Fifteen的博客">
-<meta property="og:description" content="Mobile 和现代浏览器的解决方案
-下面是解决方案。
-我们看到默认的下载选择框在firefox和chrome中是有些不同的
-Chrome 和 Firefox 中分别是这样的：">
-<meta property="og:image" content="http://hbimg.b0.upaiyun.com/1f08870648763cd62e649b4666a53a9a01ded22a4dd26-osHyyM_fw658">
-<meta property="og:updated_time" content="2016-08-23T00:29:59.268Z">
+<meta property="og:description" content="已学完javaEE，对java的面向对象有了一些了解，但工作多以前端为主，故懈怠了一段时间，内心愧疚。所以趁着下班后的时间去充充电，从jsp开始学起吧。
+现在主流的两种应用模式开始学起：
+1.C/S 桌面应用程序：基于客户机/服务端，客户机桌面上诸如QQ，YY，谷歌浏览器等程序运行在客户机上的都是基于C/S的。2.B/S web应用程序：基于浏览器/服务端，顾名思义是运行在浏览器的web应用。">
+<meta property="og:image" content="http://hbimg.b0.upaiyun.com/bf87135f3413b9ec7f27319241db34a9387bbb491017b-KgRF50_fw658">
+<meta property="og:updated_time" content="2016-08-24T03:29:29.925Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="用简单的css实现下拉列表select框的默认样式">
-<meta name="twitter:description" content="Mobile 和现代浏览器的解决方案
-下面是解决方案。
-我们看到默认的下载选择框在firefox和chrome中是有些不同的
-Chrome 和 Firefox 中分别是这样的：">
-<meta name="twitter:image" content="http://hbimg.b0.upaiyun.com/1f08870648763cd62e649b4666a53a9a01ded22a4dd26-osHyyM_fw658">
+<meta name="twitter:title" content="JSP初识（一）">
+<meta name="twitter:description" content="已学完javaEE，对java的面向对象有了一些了解，但工作多以前端为主，故懈怠了一段时间，内心愧疚。所以趁着下班后的时间去充充电，从jsp开始学起吧。
+现在主流的两种应用模式开始学起：
+1.C/S 桌面应用程序：基于客户机/服务端，客户机桌面上诸如QQ，YY，谷歌浏览器等程序运行在客户机上的都是基于C/S的。2.B/S web应用程序：基于浏览器/服务端，顾名思义是运行在浏览器的web应用。">
+<meta name="twitter:image" content="http://hbimg.b0.upaiyun.com/bf87135f3413b9ec7f27319241db34a9387bbb491017b-KgRF50_fw658">
     
 
     
@@ -220,7 +217,7 @@ Chrome 和 Firefox 中分别是这样的：">
 </aside>
 
             
-            <section id="main"><article id="post-about-select" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-jsp-one" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -229,7 +226,7 @@ Chrome 和 Firefox 中分别是这样的：">
                 
     
         <h1 class="article-title" itemprop="name">
-            用简单的css实现下拉列表select框的默认样式
+            JSP初识（一）
         </h1>
     
 
@@ -238,8 +235,8 @@ Chrome 和 Firefox 中分别是这样的：">
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/08/23/about-select/">
-            <time datetime="2016-08-23T01:02:00.000Z" itemprop="datePublished">2016-08-23</time>
+        <a href="/2016/08/24/jsp-one/">
+            <time datetime="2016-08-24T01:30:00.000Z" itemprop="datePublished">2016-08-24</time>
         </a>
     </div>
 
@@ -253,7 +250,7 @@ Chrome 和 Firefox 中分别是这样的：">
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/css/">css</a>, <a class="tag-link" href="/tags/html/">html</a>
+        <a class="tag-link" href="/tags/jsp/">jsp</a>, <a class="tag-link" href="/tags/url/">url</a>
     </div>
 
                     </div>
@@ -263,19 +260,18 @@ Chrome 和 Firefox 中分别是这样的：">
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>Mobile 和现代浏览器的解决方案</p>
-<p>下面是解决方案。</p>
-<p>我们看到默认的下载选择框在firefox和chrome中是有些不同的</p>
-<p>Chrome 和 Firefox 中分别是这样的：<br><a id="more"></a></p>
-<p><img src="http://ourjs.github.io/static/2015/firefox_default.png" alt="截图"></p>
-<p>其实用下列CSS就可以解决，原理是将浏览器默认的下拉框样式清除，然后应用上自己的，再附一张向右对齐小箭头的图片即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">select &#123;</div><div class="line">  /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/</div><div class="line">  border: solid 1px #000;</div><div class="line"></div><div class="line">  /*很关键：将默认的select选择框样式清除*/</div><div class="line">  appearance:none;</div><div class="line">  -moz-appearance:none;</div><div class="line">  -webkit-appearance:none;</div><div class="line"></div><div class="line">  /*在选择框的最右侧中间显示小箭头图片*/</div><div class="line">  background: url(&quot;http://ourjs.github.io/static/2015/arrow.png&quot;) no-repeat scroll right center transparent;</div><div class="line"></div><div class="line"></div><div class="line">  /*为下拉小箭头留出一点位置，避免被文字覆盖*/</div><div class="line">  padding-right: 14px;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">/*清除ie的默认选择框样式清除，隐藏下拉箭头*/</div><div class="line">select::-ms-expand &#123; display: none; &#125;</div></pre></td></tr></table></figure>
-<p>注*　这篇文章参考了 change-default-select-dropdown-style-just-css，但文中所述固定了select框的长度和高度，对此进行了修改。</p>
-<p>更新： 针对旧版IE的解决方案<br>评论中提到 IE8/9并不支持  appearance:none  CSS属性，想要支持的话可能需要非常特殊的方法，参考SF： 我们需要为其添加一个父容器，容器是用来覆盖小箭头的，然后为select添加一个向右的小偏移或者宽度大于父级元素。设置父级的CSS属性为超出部分不可见，即可覆盖即小箭头。然后再为父级容器添加背景图片即可。overflow: hidden并不能隐藏下拉框的显示。<br>HTML<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;parent&quot;&gt;</div><div class="line">  &lt;select&gt;</div><div class="line">      &lt;option&gt;what&lt;/option&gt;</div><div class="line">      &lt;option&gt;the&lt;/option&gt;</div><div class="line">      &lt;option&gt;hell&lt;/option&gt;</div><div class="line">  &lt;/select&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
-<p>CSS<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> #parent &#123;</div><div class="line">    background: url(&apos;yourimage&apos;) no-repeat;</div><div class="line">    width: 100px;</div><div class="line">    height: 30px;</div><div class="line">    overflow: hidden;</div><div class="line">&#125;</div><div class="line"></div><div class="line">#parent select &#123;</div><div class="line">    background: transparent;</div><div class="line">    border: none;</div><div class="line">    padding-left: 10px;</div><div class="line">    width: 120px;</div><div class="line">    height: 100%;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>美中不足的是这种方案下拉选项的宽度会比他的父容器宽一点。</p>
-<p>最后如果样式比较复杂可以考虑用div去代替，这里不做叙述。</p>
-<p>end.</p>
+            <p>已学完javaEE，对java的面向对象有了一些了解，但工作多以前端为主，故懈怠了一段时间，内心愧疚。所以趁着下班后的时间去充充电，从jsp开始学起吧。</p>
+<p>现在主流的两种应用模式开始学起：</p>
+<p>1.C/S 桌面应用程序：基于客户机/服务端，客户机桌面上诸如QQ，YY，谷歌浏览器等程序运行在客户机上的都是基于C/S的。<br>2.B/S web应用程序：基于浏览器/服务端，顾名思义是运行在浏览器的web应用。</p>
+<a id="more"></a>
+<p>这里我们主要是学习如何构建web应用程序。</p>
+<p>一个完整的网页是如何呈现在电脑上的：一个人在浏览器地址栏输入一个请求地址，这个请求地址通过客户机发送给服务器，服务器解析指定的地址，对应的jsp/servlet，然后返回给浏览器，通过客户机展示出来</p>
+<p>这个请求地址就是一个URL，遵循http协议，那么http协议是什么呢？</p>
+<p>简单的来说，http协议就是支持简单的请求和响应会话</p>
+<p>如果客户发送一个http请求，服务器会打开一个http响应做出应答。<br>每个客户机发送的http协议都不一样。<br>Http协议包含哪些元素：<br>查看工具：HttpWatch或者Google浏览器的Debug工具或者火狐的debug<br>在浏览器地址栏输入url都是get请求方式<br>get：<br>1.URL和参数之间用？分隔，参数形式是：参数名=参数值，如果是多个参数；第一个还是“？“；后面多个参数用“&amp;”进行分隔。<a href="http://www.zsjp.cn/product/list-45-0-0-1.html?brand=0&amp;color=0&amp;material=0&amp;fabrics=0&amp;keyword=" target="_blank" rel="external">http://www.zsjp.cn/product/list-45-0-0-1.html?brand=0&amp;color=0&amp;material=0&amp;fabrics=0&amp;keyword=</a><br>2.每一个浏览器URL的长度是不一样的，且是有限制的，范围在：【240-255】个字符。</p>
+<p>post：<br>一般应用于form表单提交中的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;from method=&quot;post&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>提交的长度达到kb，几乎无限制。</p>
+<p>两者区别：get请求会暴露参数列表，post不会；get有不安全性，在数据的添加或者登录注册业务的时候用post提交。</p>
 
         
         </div>
@@ -286,7 +282,7 @@ Chrome 和 Firefox 中分别是这样的：">
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/23/about-select/" data-id="cis8ce0k4000ae8vblck05kvu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/24/jsp-one/" data-id="cis8ce0kx001fe8vbnnm2bnkr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -354,7 +350,7 @@ Chrome 和 Firefox 中分别是这样的：">
 
             
     
-        <a href="http://yoursite.com/2016/08/23/about-select/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/23/about-select/">Comments</a>
+        <a href="http://yoursite.com/2016/08/24/jsp-one/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/24/jsp-one/">Comments</a>
     
 
         </footer>
@@ -363,19 +359,10 @@ Chrome 和 Firefox 中分别是这样的：">
         
 <nav id="article-nav">
     
-        <a href="/2016/08/24/jsp-one/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    JSP初识（一）
-                
-            </div>
-        </a>
     
-    
-        <a href="/2016/08/20/about-react/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2016/08/23/about-select/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">React 开发一款简单的赛车游戏</div>
+            <div class="article-nav-title">用简单的css实现下拉列表select框的默认样式</div>
         </a>
     
 </nav>
@@ -389,7 +376,7 @@ Chrome 和 Firefox 中分别是这样的：">
     <section id="comments">
     
         
-    <div class="ds-thread" data-thread-key="2016/08/23/about-select/" data-title="用简单的css实现下拉列表select框的默认样式" data-url="http://yoursite.com/2016/08/23/about-select/"></div>
+    <div class="ds-thread" data-thread-key="2016/08/24/jsp-one/" data-title="JSP初识（一）" data-url="http://yoursite.com/2016/08/24/jsp-one/"></div>
     <style>
         #ds-thread #ds-reset .ds-textarea-wrapper {
             background: none;

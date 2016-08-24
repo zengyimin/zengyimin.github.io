@@ -156,11 +156,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                19
+                20
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                13
+                15
                 <span>tags</span>
             </div>
         </div>
@@ -209,6 +209,139 @@
 
             
             <section id="main">
+    <article id="post-js" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/08/16/js/">javaScript知识点总结</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/16/js/">
+            <time datetime="2016-08-16T02:55:00.000Z" itemprop="datePublished">2016-08-16</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/经验/">经验</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/js/">js</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>话不多说，一言不合就上图<br><img src="http://img1.tbcdn.cn/tfscom/T1JBT9XkhjXXb1upjX.jpg" alt="原图 by alimama"><br></p>
+            <p class="article-more-link">
+                <a href="/2016/08/16/js/#more">Read More</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/08/16/js/" data-id="cis8gbw66001od0vbikbaos14" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/16/js/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/16/js/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-html-design" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -265,7 +398,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/16/html-design/" data-id="cis8ce0kn000ze8vbjf2eribe" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/16/html-design/" data-id="cis8gbw5r0011d0vbnywr0ta0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -400,7 +533,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/15/css3/" data-id="cis8ce0ke000pe8vb3ec5vgul" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/15/css3/" data-id="cis8gbw5l000qd0vbedavaes2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -534,7 +667,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/15/h5-swiper/" data-id="cis8ce0kh000se8vb0ii6388e" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/15/h5-swiper/" data-id="cis8gbw5n000ud0vbogyt4iz2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -667,7 +800,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/15/about-mobile/" data-id="cis8ce0jr0002e8vbx39mwx6r" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/15/about-mobile/" data-id="cis8gbw4r0000d0vbxgo1qyly" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -800,7 +933,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/15/about-wx/" data-id="cis8ce0ka000ke8vb8wuvq87w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/15/about-wx/" data-id="cis8gbw5d000kd0vbg2vqv07q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -934,7 +1067,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/13/jquery-loading/" data-id="cis8ce0ks0017e8vb3ofl82yh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/13/jquery-loading/" data-id="cis8gbw5x0019d0vbc77j3vn5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1070,7 +1203,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/13/img-lazy-load/" data-id="cis8ce0kq0014e8vbphm42i1k" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/13/img-lazy-load/" data-id="cis8gbw5u0015d0vb2p2o9bpj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1206,7 +1339,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/13/about-pjax/" data-id="cis8ce0jw0005e8vbt8j1ygxi" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/13/about-pjax/" data-id="cis8gbw510005d0vbaz6wmir2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1334,7 +1467,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/08/12/hello-world/" data-id="cis8ce0kl000we8vb8r0960um" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://yoursite.com/2016/08/12/hello-world/" data-id="cis8gbw5q000xd0vbjgraem0l" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1428,6 +1561,25 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2016/08/24/experience/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/e71df201189896f52d5da1e646643bf1bd48e60133c18-V10XBC_fw658)" alt="合理管理你的时间--大牛分享的经验" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/经验/">经验</a></p>
+                            <p class="item-title"><a href="/2016/08/24/experience/" class="title">合理管理你的时间--大牛分享的经验</a></p>
+                            <p class="item-date"><time datetime="2016-08-24T05:30:00.000Z" itemprop="datePublished">2016-08-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2016/08/24/jsp-one/" class="thumbnail">
     
     
@@ -1501,25 +1653,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/08/19/js-prototype/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://hbimg.b0.upaiyun.com/e54dcf0a66d15cf3ea5fadd7d1578df46886ac4f5f58-ziJd8f_fw658)" alt="js继承的那些事" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Study/">Study</a></p>
-                            <p class="item-title"><a href="/2016/08/19/js-prototype/" class="title">js继承的那些事</a></p>
-                            <p class="item-date"><time datetime="2016-08-19T02:54:00.000Z" itemprop="datePublished">2016-08-19</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1529,7 +1662,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Study/">Study</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人/">个人</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/经验/">经验</a><span class="category-list-count">4</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Study/">Study</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人/">个人</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/经验/">经验</a><span class="category-list-count">5</span></li></ul>
         </div>
     </div>
 
@@ -1538,7 +1671,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">19</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">20</span></li></ul>
         </div>
     </div>
 
@@ -1547,7 +1680,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/regret/">regret</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ui/">ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/url/">url</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/experience/">experience</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/regret/">regret</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/time/">time</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ui/">ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/url/">url</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1556,7 +1689,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/html/" style="font-size: 20px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/jquery/" style="font-size: 12.5px;">jquery</a> <a href="/tags/js/" style="font-size: 17.5px;">js</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/regret/" style="font-size: 10px;">regret</a> <a href="/tags/ui/" style="font-size: 10px;">ui</a> <a href="/tags/url/" style="font-size: 10px;">url</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+            <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/experience/" style="font-size: 10px;">experience</a> <a href="/tags/html/" style="font-size: 20px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/jquery/" style="font-size: 12.5px;">jquery</a> <a href="/tags/js/" style="font-size: 17.5px;">js</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/regret/" style="font-size: 10px;">regret</a> <a href="/tags/time/" style="font-size: 10px;">time</a> <a href="/tags/ui/" style="font-size: 10px;">ui</a> <a href="/tags/url/" style="font-size: 10px;">url</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
         </div>
     </div>
 

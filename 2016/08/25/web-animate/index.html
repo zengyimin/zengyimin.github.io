@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>妙味课堂网站动效demo | Fifteen的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="今天看到改版后妙味课堂的网站，有些动画特效很不错，就想着借鉴学习下。
+首先是头部导航栏的特效，鼠标hover之后有logo的变化以及栏目的变化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="妙味课堂网站动效demo">
+<meta property="og:url" content="http://yoursite.com/2016/08/25/web-animate/index.html">
+<meta property="og:site_name" content="Fifteen的博客">
+<meta property="og:description" content="今天看到改版后妙味课堂的网站，有些动画特效很不错，就想着借鉴学习下。
+首先是头部导航栏的特效，鼠标hover之后有logo的变化以及栏目的变化">
+<meta property="og:image" content="http://hbimg.b0.upaiyun.com/ad4905613021cbf417f6223ab15c49d039b434f6a8be-50ptop_fw658">
+<meta property="og:updated_time" content="2016-08-25T09:33:27.528Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="妙味课堂网站动效demo">
+<meta name="twitter:description" content="今天看到改版后妙味课堂的网站，有些动画特效很不错，就想着借鉴学习下。
+首先是头部导航栏的特效，鼠标hover之后有logo的变化以及栏目的变化">
+<meta name="twitter:image" content="http://hbimg.b0.upaiyun.com/ad4905613021cbf417f6223ab15c49d039b434f6a8be-50ptop_fw658">
+    
+
+    
+        <link rel="alternate" href="/" title="Fifteen的博客" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+    
+    
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Fifteen的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">所有文章</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+                    <a class="main-nav-link" href="/share">分享</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/litten.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">所有文章</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                    <td><a class="main-nav-link" href="/share">分享</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/litten.png" />
+            <h2 id="name">mandy的帅气男盆友</h2>
+            <h3 id="title">前端攻城狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>湖北</span>
+            <a id="follow" target="_blank" href="https://zengyimin.github.io/">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                21
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                15
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/zengyimin" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-web-animate" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            妙味课堂网站动效demo
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/25/web-animate/">
+            <time datetime="2016-08-25T09:30:00.000Z" itemprop="datePublished">2016-08-25</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Study/">Study</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/css3/">css3</a>, <a class="tag-link" href="/tags/js/">js</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>今天看到改版后妙味课堂的网站，有些动画特效很不错，就想着借鉴学习下。</p>
+<p>首先是头部导航栏的特效，鼠标hover之后有logo的变化以及栏目的变化<br><a id="more"></a><br>先看html代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">&lt;nav&gt;</div><div class="line">	&lt;div class=&quot;nav_main clear&quot;&gt;</div><div class="line">		&lt;!-- logo布局 --&gt;	</div><div class="line">		&lt;div class=&quot;logo&quot;&gt;</div><div class="line">			&lt;a href=&quot;/&quot;&gt;</div><div class="line">				&lt;img src=&quot;http://www.miaov.com/static/normal/images/logo.png&quot; class=&quot;logoBg&quot; style=&quot;transform: scale(1);&quot;&gt;</div><div class="line">				&lt;div class=&quot;logoText&quot;&gt;</div><div class="line">					&lt;div class=&quot;text&quot;&gt;</div><div class="line">						&lt;img src=&quot;http://www.miaov.com/static/normal/images/miaov.png&quot; style=&quot;top: 0px;&quot;&gt;</div><div class="line">					&lt;/div&gt;</div><div class="line">					&lt;div class=&quot;text&quot;&gt;</div><div class="line">						&lt;img src=&quot;http://www.miaov.com/static/normal/images/miaov-cn.png&quot; style=&quot;top: 0px;&quot;&gt;</div><div class="line">					&lt;/div&gt;</div><div class="line">					&lt;div class=&quot;logoAll&quot; style=&quot;opacity: 0;&quot;&gt;&lt;/div&gt;</div><div class="line">					&lt;span style=&quot;left: 270px;&quot;&gt;&lt;/span&gt;</div><div class="line">				&lt;/div&gt;</div><div class="line">			&lt;/a&gt;</div><div class="line">		&lt;/div&gt;</div><div class="line">		&lt;!-- menu布局 --&gt;	</div><div class="line">		&lt;div class=&quot;menu&quot;&gt;</div><div class="line">			&lt;div class=&quot;box&quot; style=&quot;left: 0px; top: 0px; width: 64px; -webkit-filter: blur(0px);&quot;&gt;</div><div class="line">				&lt;div class=&quot;left&quot; style=&quot;width: 0px; left: 0px; background: rgb(225, 86, 113);&quot;&gt;&lt;/div&gt;</div><div class="line">				&lt;div class=&quot;right&quot; style=&quot;width: 0px; right: 0px; background: url(&amp;quot;http://www.miaov.com/static/normal/images/nav_bg.gif&amp;quot;) repeat-x;&quot;&gt;&lt;/div&gt;</div><div class="line">			&lt;/div&gt;</div><div class="line">			&lt;ul&gt;</div><div class="line">				&lt;li&gt;&lt;a href=&quot;/&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;li&gt;&lt;a href=&quot;#&quot;&gt;课程&lt;/a&gt;&lt;/li&gt;</div><div class="line">                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;VIP会员&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;li&gt;&lt;a href=&quot;#&quot;&gt;学员作品&lt;/a&gt;&lt;/li&gt;</div><div class="line">                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;关于我们&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;li&gt;&lt;a href=&quot;#&quot; target=&quot;_blank&quot;&gt;论坛&lt;/a&gt;&lt;/li&gt;</div><div class="line">				&lt;li&gt;&lt;a href=&quot;#&quot;&gt;留言&lt;/a&gt;&lt;/li&gt;</div><div class="line">			&lt;/ul&gt;</div><div class="line">           &lt;div class=&quot;loginBtn&quot;&gt;</div><div class="line">	           	&lt;a href=&quot;javascript:;&quot; data-showloginbox=&quot;javascript&quot;&gt;登录&lt;/a&gt;</div><div class="line">	           	&lt;a href=&quot;javascript:;&quot; data-showregbox=&quot;javascript&quot; class=&quot;last_login&quot;&gt;注册&lt;/a&gt;</div><div class="line">           &lt;/div&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/nav&gt;</div></pre></td></tr></table></figure></p>
+<p>接下来是css代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">nav&#123;width:100%;height:41px;background:url(http://www.miaov.com/static/normal/images/nav_bg.gif) repeat-x;border-bottom:2px solid #e15671;position:relative;z-index:5;&#125;</div><div class="line">nav .nav_main&#123;width:1050px;height:auto;position:relative;left:50%;margin-left:-525px;z-index:5;&#125;</div><div class="line">nav .nav_main .logo&#123;width:249px;height:131px;position:absolute;top:0;left:0;&#125;</div><div class="line">nav .nav_main .logo .logoBg&#123;transition:all .1s;&#125;</div><div class="line">nav .nav_main .logo .logoText&#123;width:170px;height:100%;position:absolute;top:0;left:0;overflow:hidden;margin-left:10px;&#125;</div><div class="line">nav .nav_main .logo .logoText div&#123;overflow:hidden;position:relative;&#125;</div><div class="line">nav .nav_main .logo .logoText div:nth-of-type(1)&#123;height:45px;&#125;</div><div class="line">nav .nav_main .logo .logoText div img&#123;position:absolute;&#125;</div><div class="line">nav .nav_main .logo .logoText .logoAll&#123;width:169px;height:69px;top:-69px;background:url(http://www.miaov.com/static/normal/images/miaov-all.png);&#125;</div><div class="line">nav .nav_main .logo .logoText div:nth-of-type(2)&#123;height:24px;&#125;</div><div class="line">nav .nav_main .logo .logoText span&#123;position:absolute;left:-100px;top:42px;width:100px;height:5px;background:#e15671;&#125;</div><div class="line">.menu&#123;float:right;white-space:nowrap;position:relative;&#125;</div><div class="line">.menu .box&#123;width:0;height:100%;position:absolute;background:#e15671;left:0;overflow:visible;&#125;</div><div class="line">.menu .left&#123;width:0;height:100%;background:#fff;border-radius:50%;position:absolute;top:0;left:0;&#125;</div><div class="line">.menu .right&#123;width:0;height:100%;background:#f00;border-radius:50%;position:absolute;top:0;right:0;&#125;</div><div class="line">.menu ul&#123;padding-right:25px;position:relative;&#125;</div><div class="line">.menu ul li&#123;height:100%;display:inline-block;float:left;line-height:41px;color:#fff;font-size:14px;&#125;</div><div class="line">.menu ul li:first-child&#123;border-left:none;&#125;</div><div class="line">.menu ul li a&#123;color:#fff;display:block;padding:0 18px;&#125;</div><div class="line">.menu .loginBtn&#123;position:absolute;height:23px;top:43px;right:25px;&#125;</div><div class="line">.menu .loginBtn a&#123;display:inline-block;float:left;padding:0 13px;background-image:-moz-linear-gradient(top,#cf4c68,#e15671);background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0,#cf4c68),color-stop(1,#e15671));filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#cf4c68,endColorstr=#e15671,GradientType=&apos;0&apos;);color:#ffdbe2;font-size:12px;height:100%;line-height:23px;border-right:1px solid #fff;&#125;</div><div class="line">.menu .loginBtn a:last-child&#123;border:none;&#125;</div></pre></td></tr></table></figure></p>
+<p>这样页面样式就出来了，然后就是关键的js控制样式的变化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div></pre></td><td class="code"><pre><div class="line">$(function() &#123;</div><div class="line">	function e(e) &#123;</div><div class="line">		if (v = e.offsetLeft &gt; o.offsetLeft ? 1 : e.offsetLeft &lt; o.offsetLeft ? 2 : 0) &#123;</div><div class="line">			var n = .8 * Math.abs(e.offsetLeft - o.offsetLeft);</div><div class="line">			e.index != y &amp;&amp; (o.style.filter = &quot;blur(2px)&quot;, o.style.WebkitFilter = &quot;blur(2px)&quot;), move(o, &#123;</div><div class="line">				left: e.offsetLeft,</div><div class="line">				width: e.offsetWidth</div><div class="line">			&#125;, n, &quot;easeOut&quot;, function() &#123;</div><div class="line">				switch (v) &#123;</div><div class="line">					case 1:</div><div class="line">						t();</div><div class="line">						break;</div><div class="line">					case 2:</div><div class="line">						i();</div><div class="line">						break;</div><div class="line">					default:</div><div class="line">						move(l, &#123;</div><div class="line">							width: 0,</div><div class="line">							right: 0</div><div class="line">						&#125;, 30), move(f, &#123;</div><div class="line">							width: 0,</div><div class="line">							left: 0</div><div class="line">						&#125;, 30)</div><div class="line">				&#125;</div><div class="line">				o.style.filter = &quot;blur(0)&quot;, o.style.WebkitFilter = &quot;blur(0)&quot;</div><div class="line">			&#125;), e.offsetLeft &gt; o.offsetLeft ? (l.style.background = &quot;#e15671&quot;, f.style.background = &quot;url(http://www.miaov.com/static/normal/images/nav_bg.gif) repeat-x&quot;, move(l, &#123;</div><div class="line">				width: 40,</div><div class="line">				right: -20</div><div class="line">			&#125;, 150), move(f, &#123;</div><div class="line">				width: 40,</div><div class="line">				left: -20</div><div class="line">			&#125;, 150)) : e.offsetLeft &lt; o.offsetLeft &amp;&amp; (l.style.background = &quot;url(http://www.miaov.com/static/normal/images/nav_bg.gif) repeat-x&quot;, f.style.background = &quot;#e15671&quot;, move(l, &#123;</div><div class="line">				width: 40,</div><div class="line">				right: -20</div><div class="line">			&#125;, 150), move(f, &#123;</div><div class="line">				width: 40,</div><div class="line">				left: -20</div><div class="line">			&#125;, 150)), y = e.index</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	function t() &#123;</div><div class="line">		move(l, &#123;</div><div class="line">			width: 0,</div><div class="line">			right: 0</div><div class="line">		&#125;, 80, &quot;linear&quot;, function() &#123;</div><div class="line">			l.style.background = &quot;url(http://www.miaov.com/static/normal/images/nav_bg.gif) repeat-x&quot;, move(l, &#123;</div><div class="line">				width: 20,</div><div class="line">				right: -10</div><div class="line">			&#125;, 80, &quot;linear&quot;, function() &#123;</div><div class="line">				move(l, &#123;</div><div class="line">					width: 0,</div><div class="line">					right: 0</div><div class="line">				&#125;, 50, &quot;linear&quot;)</div><div class="line">			&#125;)</div><div class="line">		&#125;), move(f, &#123;</div><div class="line">			width: 0,</div><div class="line">			left: 0</div><div class="line">		&#125;, 80, &quot;linear&quot;, function() &#123;</div><div class="line">			f.style.background = &quot;#e15671&quot;, move(f, &#123;</div><div class="line">				width: 20,</div><div class="line">				left: -10</div><div class="line">			&#125;, 80, &quot;linear&quot;, function() &#123;</div><div class="line">				move(f, &#123;</div><div class="line">					width: 0,</div><div class="line">					left: 0</div><div class="line">				&#125;, 50, &quot;linear&quot;)</div><div class="line">			&#125;)</div><div class="line">		&#125;)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	function i() &#123;</div><div class="line">		move(l, &#123;</div><div class="line">			width: 0,</div><div class="line">			right: 0</div><div class="line">		&#125;, 80, &quot;linear&quot;, function() &#123;</div><div class="line">			l.style.background = &quot;url(http://www.miaov.com/static/normal/images/nav_bg.gif) repeat-x&quot;, move(l, &#123;</div><div class="line">				width: 20,</div><div class="line">				right: -10</div><div class="line">			&#125;, 80, &quot;linear&quot;, function() &#123;</div><div class="line">				move(l, &#123;</div><div class="line">					width: 0,</div><div class="line">					right: 0</div><div class="line">				&#125;, 50, &quot;linear&quot;)</div><div class="line">			&#125;)</div><div class="line">		&#125;), move(f, &#123;</div><div class="line">			width: 0,</div><div class="line">			left: 0</div><div class="line">		&#125;, 80, &quot;linear&quot;, function() &#123;</div><div class="line">			f.style.background = &quot;#e15671&quot;, move(f, &#123;</div><div class="line">				width: 20,</div><div class="line">				left: -10</div><div class="line">			&#125;, 80, &quot;linear&quot;, function() &#123;</div><div class="line">				move(f, &#123;</div><div class="line">					width: 0,</div><div class="line">					left: 0</div><div class="line">				&#125;, 50, &quot;linear&quot;)</div><div class="line">			&#125;)</div><div class="line">		&#125;)</div><div class="line">	&#125;</div><div class="line">	// 	定义全局变量</div><div class="line">	var initNum = 0;</div><div class="line"></div><div class="line">	var n = document.getElementsByTagName(&quot;nav&quot;)[0],</div><div class="line">		o = n.getElementsByClassName(&quot;box&quot;)[0],</div><div class="line">		l = n.getElementsByClassName(&quot;right&quot;)[0],</div><div class="line">		f = n.getElementsByClassName(&quot;left&quot;)[0],</div><div class="line">		a = n.getElementsByTagName(&quot;ul&quot;)[0],</div><div class="line">		s = a.getElementsByTagName(&quot;li&quot;),</div><div class="line">		m = n.getElementsByClassName(&quot;logo&quot;)[0],</div><div class="line">		r = (m.getElementsByClassName(&quot;text&quot;), m.getElementsByTagName(&quot;img&quot;)),</div><div class="line">		g = m.getElementsByTagName(&quot;span&quot;)[0],</div><div class="line">		u = m.getElementsByClassName(&quot;logoAll&quot;)[0],</div><div class="line">		c = s[initNum].offsetLeft,</div><div class="line">		h = s[0].offsetTop,</div><div class="line">		d = initNum,</div><div class="line">		y = 0,</div><div class="line">		v = 0,</div><div class="line">		b = !0,</div><div class="line">		p = 0;</div><div class="line">	o.style.left = c + &quot;px&quot;, o.style.top = h + &quot;px&quot;, o.style.width = s[initNum].offsetWidth + &quot;px&quot;;</div><div class="line">	for (var w = 0; w &lt; s.length; w++) s[w].index = w, s[w].onmouseenter = function() &#123;</div><div class="line">		clearTimeout(p), e(this)</div><div class="line">	&#125;;</div><div class="line">	a.onmouseleave = function() &#123;</div><div class="line">		p = setTimeout(function() &#123;</div><div class="line">			e(s[d])</div><div class="line">		&#125;, 100)</div><div class="line">	&#125;, m.onmouseenter = function() &#123;</div><div class="line">		b &amp;&amp; (b = !1, r[0].style.transform = &quot;scale(1.05)&quot;, r[1].style.top = &quot;47px&quot;, r[2].style.top = &quot;-25px&quot;, u.style.opacity = 0, g.style.left = &quot;-100px&quot;, move(g, &#123;</div><div class="line">			left: 270</div><div class="line">		&#125;, 300, &quot;linear&quot;, function() &#123;</div><div class="line">			move(r[1], &#123;</div><div class="line">				top: 0</div><div class="line">			&#125;, 300), move(r[2], &#123;</div><div class="line">				top: 0</div><div class="line">			&#125;, 300, &quot;linear&quot;, function() &#123;</div><div class="line">				move(u, &#123;</div><div class="line">					opacity: 1</div><div class="line">				&#125;, 300, &quot;linear&quot;, function() &#123;</div><div class="line">					b = !0</div><div class="line">				&#125;)</div><div class="line">			&#125;)</div><div class="line">		&#125;))</div><div class="line">	&#125;, m.onmouseleave = function() &#123;</div><div class="line">		r[0].style.transform = &quot;scale(1)&quot;</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>文件引用了一个move方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div></pre></td><td class="code"><pre><div class="line">function move(t, n, e, r, a) &#123;</div><div class="line">	clearInterval(t.iTimer);</div><div class="line">	var u = e || 1e3,</div><div class="line">		i = &#123;&#125;;</div><div class="line">	for (var o in n) i[o] = &#123;&#125;, &quot;opacity&quot; == o ? (i[o].b = Math.round(100 * css(t, o)), i[o].c = 100 * n[o] - i[o].b) : (i[o].b = parseInt(css(t, o)), i[o].c = n[o] - i[o].b);</div><div class="line">	var r = r || &quot;linear&quot;,</div><div class="line">		c = (new Date).getTime();</div><div class="line">	t.iTimer = setInterval(function() &#123;</div><div class="line">		var e = (new Date).getTime() - c;</div><div class="line">		e &gt;= u &amp;&amp; (e = u);</div><div class="line">		for (var o in n) &#123;</div><div class="line">			var f = Tween[r](e, i[o].b, i[o].c, u);</div><div class="line">			&quot;opacity&quot; == o ? (t.style[o] = f / 100, t.style.filter = &quot;alpha(opacity=&quot; + f + &quot;)&quot;) : t.style[o] = f + &quot;px&quot;</div><div class="line">		&#125;</div><div class="line">		e == u &amp;&amp; (clearInterval(t.iTimer), a &amp;&amp; a.call(t))</div><div class="line">	&#125;, 16)</div><div class="line">&#125;</div><div class="line"></div><div class="line">function css(t, n) &#123;</div><div class="line">	return t.currentStyle ? t.currentStyle[n] : getComputedStyle(t, !1)[n]</div><div class="line">&#125;</div><div class="line">var Tween = &#123;</div><div class="line">	linear: function(t, n, e, r) &#123;</div><div class="line">		return e * t / r + n</div><div class="line">	&#125;,</div><div class="line">	easeIn: function(t, n, e, r) &#123;</div><div class="line">		return e * (t /= r) * t + n</div><div class="line">	&#125;,</div><div class="line">	easeOut: function(t, n, e, r) &#123;</div><div class="line">		return -e * (t /= r) * (t - 2) + n</div><div class="line">	&#125;,</div><div class="line">	easeBoth: function(t, n, e, r) &#123;</div><div class="line">		return (t /= r / 2) &lt; 1 ? e / 2 * t * t + n : -e / 2 * (--t * (t - 2) - 1) + n</div><div class="line">	&#125;,</div><div class="line">	easeInStrong: function(t, n, e, r) &#123;</div><div class="line">		return e * (t /= r) * t * t * t + n</div><div class="line">	&#125;,</div><div class="line">	easeOutStrong: function(t, n, e, r) &#123;</div><div class="line">		return -e * ((t = t / r - 1) * t * t * t - 1) + n</div><div class="line">	&#125;,</div><div class="line">	easeBothStrong: function(t, n, e, r) &#123;</div><div class="line">		return (t /= r / 2) &lt; 1 ? e / 2 * t * t * t * t + n : -e / 2 * ((t -= 2) * t * t * t - 2) + n</div><div class="line">	&#125;,</div><div class="line">	elasticIn: function(t, n, e, r, a, u) &#123;</div><div class="line">		if (0 === t) return n;</div><div class="line">		if (1 == (t /= r)) return n + e;</div><div class="line">		if (u || (u = .3 * r), !a || a &lt; Math.abs(e)) &#123;</div><div class="line">			a = e;</div><div class="line">			var i = u / 4</div><div class="line">		&#125; else var i = u / (2 * Math.PI) * Math.asin(e / a);</div><div class="line">		return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin(2 * (t * r - i) * Math.PI / u)) + n</div><div class="line">	&#125;,</div><div class="line">	elasticOut: function(t, n, e, r, a, u) &#123;</div><div class="line">		if (0 === t) return n;</div><div class="line">		if (1 == (t /= r)) return n + e;</div><div class="line">		if (u || (u = .3 * r), !a || a &lt; Math.abs(e)) &#123;</div><div class="line">			a = e;</div><div class="line">			var i = u / 4</div><div class="line">		&#125; else var i = u / (2 * Math.PI) * Math.asin(e / a);</div><div class="line">		return a * Math.pow(2, -10 * t) * Math.sin(2 * (t * r - i) * Math.PI / u) + e + n</div><div class="line">	&#125;,</div><div class="line">	elasticBoth: function(t, n, e, r, a, u) &#123;</div><div class="line">		if (0 === t) return n;</div><div class="line">		if (2 == (t /= r / 2)) return n + e;</div><div class="line">		if (u || (u = .3 * r * 1.5), !a || a &lt; Math.abs(e)) &#123;</div><div class="line">			a = e;</div><div class="line">			var i = u / 4</div><div class="line">		&#125; else var i = u / (2 * Math.PI) * Math.asin(e / a);</div><div class="line">		return 1 &gt; t ? -.5 * a * Math.pow(2, 10 * (t -= 1)) * Math.sin(2 * (t * r - i) * Math.PI / u) + n : a * Math.pow(2, -10 * (t -= 1)) * Math.sin(2 * (t * r - i) * Math.PI / u) * .5 + e + n</div><div class="line">	&#125;,</div><div class="line">	backIn: function(t, n, e, r, a) &#123;</div><div class="line">		return &quot;undefined&quot; == typeof a &amp;&amp; (a = 1.70158), e * (t /= r) * t * ((a + 1) * t - a) + n</div><div class="line">	&#125;,</div><div class="line">	backOut: function(t, n, e, r, a) &#123;</div><div class="line">		return &quot;undefined&quot; == typeof a &amp;&amp; (a = 2.0158), e * ((t = t / r - 1) * t * ((a + 1) * t + a) + 1) + n</div><div class="line">	&#125;,</div><div class="line">	backBoth: function(t, n, e, r, a) &#123;</div><div class="line">		return &quot;undefined&quot; == typeof a &amp;&amp; (a = 1.70158), (t /= r / 2) &lt; 1 ? e / 2 * t * t * (((a *= 1.525) + 1) * t - a) + n : e / 2 * ((t -= 2) * t * (((a *= 1.525) + 1) * t + a) + 2) + n</div><div class="line">	&#125;,</div><div class="line">	bounceIn: function(t, n, e, r) &#123;</div><div class="line">		return e - Tween.bounceOut(r - t, 0, e, r) + n</div><div class="line">	&#125;,</div><div class="line">	bounceOut: function(t, n, e, r) &#123;</div><div class="line">		return (t /= r) &lt; 1 / 2.75 ? 7.5625 * e * t * t + n : 2 / 2.75 &gt; t ? e * (7.5625 * (t -= 1.5 / 2.75) * t + .75) + n : 2.5 / 2.75 &gt; t ? e * (7.5625 * (t -= 2.25 / 2.75) * t + .9375) + n : e * (7.5625 * (t -= 2.625 / 2.75) * t + .984375) + n</div><div class="line">	&#125;,</div><div class="line">	bounceBoth: function(t, n, e, r) &#123;</div><div class="line">		return r / 2 &gt; t ? .5 * Tween.bounceIn(2 * t, 0, e, r) + n : .5 * Tween.bounceOut(2 * t - r, 0, e, r) + .5 * e + n</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>到这里，nav的动态效果就完成了，首页还有字体的动效，基本实现思路是给每个字包裹一个span，给其添加绝对定位，通过top的改变实现平滑的移动。</p>
+<p>这个下次再分享。</p>
+<p>end.</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/08/25/web-animate/" data-id="cisa4u4n1001rucvbljaujj30" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/08/25/web-animate/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/08/25/web-animate/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2016/08/24/experience/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">合理管理你的时间--大牛分享的经验</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2016/08/25/web-animate/" data-title="妙味课堂网站动效demo" data-url="http://yoursite.com/2016/08/25/web-animate/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/25/web-animate/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/ad4905613021cbf417f6223ab15c49d039b434f6a8be-50ptop_fw658)" alt="妙味课堂网站动效demo" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study/">Study</a></p>
+                            <p class="item-title"><a href="/2016/08/25/web-animate/" class="title">妙味课堂网站动效demo</a></p>
+                            <p class="item-date"><time datetime="2016-08-25T09:30:00.000Z" itemprop="datePublished">2016-08-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/24/experience/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/e71df201189896f52d5da1e646643bf1bd48e60133c18-V10XBC_fw658)" alt="合理管理你的时间--大牛分享的经验" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/经验/">经验</a></p>
+                            <p class="item-title"><a href="/2016/08/24/experience/" class="title">合理管理你的时间--大牛分享的经验</a></p>
+                            <p class="item-date"><time datetime="2016-08-24T05:30:00.000Z" itemprop="datePublished">2016-08-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/24/jsp-one/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/bf87135f3413b9ec7f27319241db34a9387bbb491017b-KgRF50_fw658)" alt="JSP初识（一）" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study/">Study</a></p>
+                            <p class="item-title"><a href="/2016/08/24/jsp-one/" class="title">JSP初识（一）</a></p>
+                            <p class="item-date"><time datetime="2016-08-24T01:30:00.000Z" itemprop="datePublished">2016-08-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/23/about-select/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/1f08870648763cd62e649b4666a53a9a01ded22a4dd26-osHyyM_fw658)" alt="用简单的css实现下拉列表select框的默认样式" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study/">Study</a></p>
+                            <p class="item-title"><a href="/2016/08/23/about-select/" class="title">用简单的css实现下拉列表select框的默认样式</a></p>
+                            <p class="item-date"><time datetime="2016-08-23T01:02:00.000Z" itemprop="datePublished">2016-08-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/20/about-react/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/6c56bfb1e861864446283f5d847ab0189b810bd47302-Vmf6q1_fw658)" alt="React 开发一款简单的赛车游戏" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study/">Study</a></p>
+                            <p class="item-title"><a href="/2016/08/20/about-react/" class="title">React 开发一款简单的赛车游戏</a></p>
+                            <p class="item-date"><time datetime="2016-08-20T09:02:00.000Z" itemprop="datePublished">2016-08-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Study/">Study</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人/">个人</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/经验/">经验</a><span class="category-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">21</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/experience/">experience</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/regret/">regret</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/time/">time</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ui/">ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/url/">url</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/css3/" style="font-size: 12.5px;">css3</a> <a href="/tags/experience/" style="font-size: 10px;">experience</a> <a href="/tags/html/" style="font-size: 20px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/jquery/" style="font-size: 12.5px;">jquery</a> <a href="/tags/js/" style="font-size: 17.5px;">js</a> <a href="/tags/jsp/" style="font-size: 10px;">jsp</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/regret/" style="font-size: 10px;">regret</a> <a href="/tags/time/" style="font-size: 10px;">time</a> <a href="/tags/ui/" style="font-size: 10px;">ui</a> <a href="/tags/url/" style="font-size: 10px;">url</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2016 zengyimin<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'zengyimin'};
+    (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

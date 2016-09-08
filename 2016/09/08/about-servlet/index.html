@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>jsp之servlet初识 | Fifteen的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="最近几天，天气阴晴不定，雨时断时续，心情也是不太好，老是犯困，效率也不太高，看来是放松了自己，肚子上的肉还是没有减下来，学习的动力也没有以前足了。看到妹子在备战即将到来的教
+师资格证的考试，心里也是对自己的放松感到愧疚，那就学习吧。前段时间学习了web请求的类型，以及请求和响应的相关知识。现在大部分针对的都是B/
+S结构的，通过浏览器去与用户交互。现在更深入的去了解下整个请求响应的过程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jsp之servlet初识">
+<meta property="og:url" content="http://yoursite.com/2016/09/08/about-servlet/index.html">
+<meta property="og:site_name" content="Fifteen的博客">
+<meta property="og:description" content="最近几天，天气阴晴不定，雨时断时续，心情也是不太好，老是犯困，效率也不太高，看来是放松了自己，肚子上的肉还是没有减下来，学习的动力也没有以前足了。看到妹子在备战即将到来的教
+师资格证的考试，心里也是对自己的放松感到愧疚，那就学习吧。前段时间学习了web请求的类型，以及请求和响应的相关知识。现在大部分针对的都是B/
+S结构的，通过浏览器去与用户交互。现在更深入的去了解下整个请求响应的过程。">
+<meta property="og:image" content="http://hbimg.b0.upaiyun.com/688c4187d534d1d68c880a89f4300423f4c28890154c6-iHA6TN_fw658">
+<meta property="og:updated_time" content="2016-09-08T06:52:45.336Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jsp之servlet初识">
+<meta name="twitter:description" content="最近几天，天气阴晴不定，雨时断时续，心情也是不太好，老是犯困，效率也不太高，看来是放松了自己，肚子上的肉还是没有减下来，学习的动力也没有以前足了。看到妹子在备战即将到来的教
+师资格证的考试，心里也是对自己的放松感到愧疚，那就学习吧。前段时间学习了web请求的类型，以及请求和响应的相关知识。现在大部分针对的都是B/
+S结构的，通过浏览器去与用户交互。现在更深入的去了解下整个请求响应的过程。">
+<meta name="twitter:image" content="http://hbimg.b0.upaiyun.com/688c4187d534d1d68c880a89f4300423f4c28890154c6-iHA6TN_fw658">
+    
+
+    
+        <link rel="alternate" href="/" title="Fifteen的博客" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+    
+    
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Fifteen的博客</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">所有文章</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+                    <a class="main-nav-link" href="/share">分享</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/litten.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">所有文章</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                    <td><a class="main-nav-link" href="/share">分享</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/litten.png" />
+            <h2 id="name">mandy的帅气男盆友</h2>
+            <h3 id="title">前端攻城狮</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>湖北</span>
+            <a id="follow" target="_blank" href="https://zengyimin.github.io/">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                27
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                19
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/zengyimin" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-about-servlet" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            jsp之servlet初识
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/09/08/about-servlet/">
+            <time datetime="2016-09-08T02:30:00.000Z" itemprop="datePublished">2016-09-08</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Study/">Study</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/java/">java</a>, <a class="tag-link" href="/tags/servlet/">servlet</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>最近几天，天气阴晴不定，雨时断时续，心情也是不太好，老是犯困，效率也不太高，看来是放松了自己，肚子上的肉还是没有减下来，学习的动力也没有以前足了。看到妹子在备战即将到来的教</p>
+<p>师资格证的考试，心里也是对自己的放松感到愧疚，那就学习吧。前段时间学习了web请求的类型，以及请求和响应的相关知识。现在大部分针对的都是B/</p>
+<p>S结构的，通过浏览器去与用户交互。现在更深入的去了解下整个请求响应的过程。</p>
+<a id="more"></a>
+<p>现在我们已经通过MyEclipse新建了一个web-project，src目录里面存放servlet相关java文件，在容器配置好后，将会编译后存放在webapps-webINF-classes里面。WebRoot目录下放置资源文件，也会存放在容器webapps中。<br>接下来我们来分析下一个请求怎样输出在浏览器，以简单的登录注册为例。首先，在浏览器访问一个地址localhost:8080/blog/login;然后请求会在web.xml文件中解析，里面servlet映射里面的url-partting有没有对应的/login地址，有的话找出对应的servlet-name，然后根据servlet-name（servlet注册）找到对应的包下面的servlet程序地址，然后执行doGet或者doPost方法。</p>
+<p>具体实现代码：<br>LoginResServlet.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div></pre></td><td class="code"><pre><div class="line">package com.xieth.javaweb;</div><div class="line"></div><div class="line">import java.io.IOException;</div><div class="line">import java.io.PrintWriter;</div><div class="line">import java.sql.Connection;</div><div class="line">import java.sql.DriverManager;</div><div class="line">import java.sql.ResultSet;</div><div class="line">import java.sql.Statement;</div><div class="line">import javax.servlet.ServletConfig;</div><div class="line">import javax.servlet.ServletException;</div><div class="line">import javax.servlet.http.HttpServlet;</div><div class="line">import javax.servlet.http.HttpServletRequest;</div><div class="line">import javax.servlet.http.HttpServletResponse;</div><div class="line"></div><div class="line">public class LoginResServlet extends HttpServlet &#123;</div><div class="line">    sqlDemo sqlD = null;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void init(ServletConfig config) throws ServletException &#123;</div><div class="line">        try &#123;</div><div class="line">            sqlD = new sqlDemo();</div><div class="line">        &#125; catch (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void doPost(HttpServletRequest req, HttpServletResponse resp)</div><div class="line">            throws ServletException, IOException &#123;</div><div class="line">        resp.setContentType(&quot;text/html;charset=utf-8&quot;);</div><div class="line">        req.setCharacterEncoding(&quot;utf-8&quot;);</div><div class="line">        String action = req.getParameter(&quot;action&quot;);</div><div class="line">        PrintWriter out = resp.getWriter();</div><div class="line"></div><div class="line">        // 注册</div><div class="line">        if (action.equals(&quot;Register&quot;)) &#123;</div><div class="line">            String name = req.getParameter(&quot;name&quot;);</div><div class="line">            String password = req.getParameter(&quot;password&quot;);</div><div class="line">            String passwordProblm = req.getParameter(&quot;passwordProblem&quot;);</div><div class="line">            String problemResult = req.getParameter(&quot;problemResult&quot;);</div><div class="line">            boolean isEmpty = (name != null &amp;&amp; !name.equals(&quot;&quot;)</div><div class="line">                    &amp;&amp; password != null &amp;&amp; !password.equals(&quot;&quot;)</div><div class="line">                    &amp;&amp; passwordProblm != null &amp;&amp; !passwordProblm.equals(&quot;&quot;)</div><div class="line">                    &amp;&amp; problemResult != null &amp;&amp; !problemResult.equals(&quot;&quot;));</div><div class="line">            System.out.println(isEmpty);</div><div class="line">            if (isEmpty) &#123;</div><div class="line">                try &#123;</div><div class="line">                    boolean flag = sqlD.InsertData(name, password,</div><div class="line">                            passwordProblm, problemResult);</div><div class="line">                    if (flag) &#123;</div><div class="line">                        out.println(&quot;&lt;h1&gt;恭喜你&quot; + name</div><div class="line">                                + &quot;:注册成功点击&lt;a href=&apos;login.html&apos;&gt;登录&lt;/a&gt;&lt;/h1&gt;&quot;);</div><div class="line">                    &#125; else &#123;</div><div class="line">                        out.println(&quot;&lt;h1&gt;Soory&quot;</div><div class="line">                                + name</div><div class="line">                                + &quot;:注册失败,该用户已经存在,点击&lt;a href=&apos;Register.html&apos;&gt;重新注册&lt;/a&gt;&lt;/h1&gt;&quot;);</div><div class="line">                    &#125;</div><div class="line">                &#125; catch (Exception e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">            &#125; else &#123;</div><div class="line">                out.println(&quot;&lt;h1&gt;所以选项均不可以为空！！！点击&lt;a href=&apos;Register.html&apos;&gt;重新注册&lt;/h1&gt;&quot;);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125; else &#123; // 登录</div><div class="line">            String name = req.getParameter(&quot;name&quot;);</div><div class="line">            String password = req.getParameter(&quot;password&quot;);</div><div class="line"></div><div class="line">            try &#123;</div><div class="line">                boolean flag = sqlD.LoginCorrect(name, password);</div><div class="line">                if (flag) &#123;</div><div class="line">                    out.println(&quot;&lt;h1&gt;欢迎你:&quot; + name + &quot;&lt;/h1&gt;&quot;);</div><div class="line">                &#125; else &#123;</div><div class="line">                    out.println(&quot;&lt;h1&gt;SOrry密码错误！点击重新&lt;a href=&apos;login.html&apos;&gt;登录&lt;/a&gt;&lt;/h1&gt;&quot;);</div><div class="line"></div><div class="line">                &#125;</div><div class="line">            &#125; catch (Exception e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void doGet(HttpServletRequest req, HttpServletResponse resp)</div><div class="line">            throws ServletException, IOException &#123;</div><div class="line">        this.doGet(req, resp);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">class sqlDemo &#123;</div><div class="line"></div><div class="line">    private Connection conn = null;</div><div class="line">    private Statement statement = null;</div><div class="line"></div><div class="line">    public sqlDemo() throws Exception &#123;</div><div class="line">        conn = getConnection();</div><div class="line">        statement = conn.createStatement();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // 查看登录用户名和密码是否正确</div><div class="line">    public boolean LoginCorrect(String name, String password) throws Exception &#123;</div><div class="line">        String sql = &quot;select * from logindemo where name = &apos;&quot; + name + &quot;&apos;&quot;;</div><div class="line">        ResultSet rs = statement.executeQuery(sql);</div><div class="line">        // 查看是否合法</div><div class="line">        while (rs.next()) &#123;</div><div class="line">            if (name.equals(rs.getString(&quot;name&quot;))</div><div class="line">                    &amp;&amp; password.equals(rs.getString(&quot;password&quot;)))</div><div class="line">                return true;</div><div class="line">        &#125;</div><div class="line">        rs.close();</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // 插入数据</div><div class="line">    public boolean InsertData(String name, String password,</div><div class="line">            String passwordProblm, String problemResult) throws Exception &#123;</div><div class="line">        String sql = &quot;insert into logindemo values (&apos;&quot; + name + &quot;&apos;,&apos;&quot;</div><div class="line">                + password + &quot;&apos;,&apos;&quot; + passwordProblm + &quot;&apos;,&apos;&quot; + problemResult</div><div class="line">                + &quot;&apos;)&quot;;</div><div class="line">        String isAgainSql = &quot;select name from logindemo where name = &apos;&quot; + name</div><div class="line">                + &quot;&apos;&quot;;</div><div class="line">        ResultSet rs = statement.executeQuery(isAgainSql);</div><div class="line">        // 查看是否用户名重复</div><div class="line">        while (rs.next()) &#123;</div><div class="line">            if (rs.getString(&quot;name&quot;).equals(name)) &#123;</div><div class="line">                return false;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        statement.executeUpdate(sql);</div><div class="line">        rs.close();</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private Connection getConnection() throws Exception &#123;</div><div class="line">        String driverClass = &quot;com.mysql.jdbc.Driver&quot;;</div><div class="line">        String url = &quot;jdbc:mysql:///hello?useUnicode=true&amp;characterEncoding=utf8&quot;;</div><div class="line">        String user = &quot;root&quot;;</div><div class="line">        String password = &quot;123456&quot;;</div><div class="line"></div><div class="line">        // 注册加载驱动</div><div class="line">        Class.forName(driverClass);</div><div class="line"></div><div class="line">        // 获取连接</div><div class="line"></div><div class="line">        Connection conn = DriverManager.getConnection(url, user, password);</div><div class="line">        System.out.println(conn);</div><div class="line">        return conn;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Register.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</div><div class="line">&lt;title&gt;Insert title here&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;form action=&quot;LoginResServlet&quot; method=&quot;post&quot;&gt;</div><div class="line"></div><div class="line">        用户名:&lt;input type=&quot;text&quot; name=&quot;name&quot;&gt; 密码:&lt;input type=&quot;password&quot;</div><div class="line">            name=&quot;password&quot;&gt; 密码找回问题:&lt;input type=&quot;text&quot;</div><div class="line">            name=&quot;passwordProblem&quot;&gt; 答案:&lt;input type=&quot;text&quot;</div><div class="line">            name=&quot;problemResult&quot;&gt; &lt;input type=&quot;submit&quot; value=&quot;注册&quot;&gt;</div><div class="line">        &lt;input type=&quot;hidden&quot; name=&quot;action&quot; value=&quot;Register&quot;&gt;</div><div class="line">    &lt;/form&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>login.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</div><div class="line">&lt;title&gt;Insert title here&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;form action=&quot;LoginResServlet&quot; method=&quot;post&quot;&gt;</div><div class="line">        用户名:&lt;input type=&quot;text&quot; name=&quot;name&quot;&gt; 密码:&lt;input type=&quot;password&quot;</div><div class="line">            name=&quot;password&quot;&gt; &lt;input type=&quot;submit&quot; value=&quot;登录&quot;&gt; &lt;input</div><div class="line">            type=&quot;hidden&quot; name=&quot;action&quot; value=&quot;login&quot;&gt;</div><div class="line">    &lt;/form&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>web.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">    xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot; xmlns:web=&quot;http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&quot;</div><div class="line">    xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&quot;</div><div class="line">    id=&quot;WebApp_ID&quot; version=&quot;3.0&quot;&gt;</div><div class="line">    &lt;servlet&gt;</div><div class="line">		&lt;!--servlet注册--&gt;</div><div class="line">        &lt;servlet-name&gt;LoginResServlet&lt;/servlet-name&gt;</div><div class="line">        &lt;servlet-class&gt;com.xieth.javaweb.LoginResServlet&lt;/servlet-class&gt;</div><div class="line"></div><div class="line">    &lt;/servlet&gt;</div><div class="line">	&lt;!-- servlet映射 --&gt;</div><div class="line">    &lt;servlet-mapping&gt;</div><div class="line"></div><div class="line">        &lt;servlet-name&gt;LoginResServlet&lt;/servlet-name&gt;</div><div class="line">        &lt;url-pattern&gt;/LoginResServlet&lt;/url-pattern&gt;</div><div class="line"></div><div class="line">    &lt;/servlet-mapping&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;/web-app&gt;</div></pre></td></tr></table></figure></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2016/09/08/about-servlet/" data-id="cistz94hc000nz8vba9hlnwtz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/09/08/about-servlet/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/09/08/about-servlet/">Comments</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2016/09/05/about-js-style/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">js 基本类型与引用类型的区别</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2016/09/08/about-servlet/" data-title="jsp之servlet初识" data-url="http://yoursite.com/2016/09/08/about-servlet/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/09/08/about-servlet/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/688c4187d534d1d68c880a89f4300423f4c28890154c6-iHA6TN_fw658)" alt="jsp之servlet初识" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study/">Study</a></p>
+                            <p class="item-title"><a href="/2016/09/08/about-servlet/" class="title">jsp之servlet初识</a></p>
+                            <p class="item-date"><time datetime="2016-09-08T02:30:00.000Z" itemprop="datePublished">2016-09-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/09/05/about-js-style/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/6cdbde9b8b5edf1f1c6e5b4cc0fd011d9e21f1a0b0fa-qovYC1_fw658)" alt="js 基本类型与引用类型的区别" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/经验/">经验</a></p>
+                            <p class="item-title"><a href="/2016/09/05/about-js-style/" class="title">js 基本类型与引用类型的区别</a></p>
+                            <p class="item-date"><time datetime="2016-09-05T07:30:00.000Z" itemprop="datePublished">2016-09-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/09/01/about-design/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/a49c457c10968b9c42d5134b800c29a0ffe767e416ff8-QgVDD8_fw658)" alt="设计之初确定下来的规范--避免风格不统一" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/经验/">经验</a></p>
+                            <p class="item-title"><a href="/2016/09/01/about-design/" class="title">设计之初确定下来的规范--避免风格不统一</a></p>
+                            <p class="item-date"><time datetime="2016-09-01T05:30:00.000Z" itemprop="datePublished">2016-09-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/30/pc-animate/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/62972c0a85d9150229a0a2adf2d5504ead76e6b815c5b9-yQm8SU_fw658)" alt="pc端js插件superslider" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study/">Study</a></p>
+                            <p class="item-title"><a href="/2016/08/30/pc-animate/" class="title">pc端js插件superslider</a></p>
+                            <p class="item-date"><time datetime="2016-08-30T02:58:00.000Z" itemprop="datePublished">2016-08-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/08/26/jsp-two/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://hbimg.b0.upaiyun.com/a47caab080fd419bb6ac8c807812077559e1bd57148cd-GeME2D_fw658)" alt="jsp入门之二" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Study/">Study</a></p>
+                            <p class="item-title"><a href="/2016/08/26/jsp-two/" class="title">jsp入门之二</a></p>
+                            <p class="item-date"><time datetime="2016-08-26T02:30:00.000Z" itemprop="datePublished">2016-08-26</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Study/">Study</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/个人/">个人</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/经验/">经验</a><span class="category-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">24</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/design/">design</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/experience/">experience</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/">jquery</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jsp/">jsp</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/regret/">regret</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/">servlet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/time/">time</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ui/">ui</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/url/">url</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/css3/" style="font-size: 13.33px;">css3</a> <a href="/tags/design/" style="font-size: 10px;">design</a> <a href="/tags/experience/" style="font-size: 13.33px;">experience</a> <a href="/tags/html/" style="font-size: 20px;">html</a> <a href="/tags/html5/" style="font-size: 10px;">html5</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/jquery/" style="font-size: 13.33px;">jquery</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/jsp/" style="font-size: 13.33px;">jsp</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/react/" style="font-size: 10px;">react</a> <a href="/tags/regret/" style="font-size: 10px;">regret</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/time/" style="font-size: 10px;">time</a> <a href="/tags/ui/" style="font-size: 10px;">ui</a> <a href="/tags/url/" style="font-size: 10px;">url</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2016 zengyimin<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'zengyimin'};
+    (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

@@ -3,17 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Etiqueta: ui | Fifteen的博客</title>
+    <title>表单提交对象--FormDate | Fifteen的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="武大东分09级，热爱前端设计。擅长各项前端技能，深入研究移动端开发与前端性能。非专业视觉设计师。此为博客一枚。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Fifteen的博客">
-<meta property="og:url" content="http://yoursite.com/tags/ui/index.html">
+    <meta name="description" content="最近项目中的个人中心涉及大量表单的提交，为方便ajax提交数据到后台，利用FormData对象,你可以使用一系列的键值对来模拟一个完整的表单,然后使用XMLHttpRequest发送这个”表单”.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="表单提交对象--FormDate">
+<meta property="og:url" content="http://yoursite.com/2016/09/13/about-FormDate/index.html">
 <meta property="og:site_name" content="Fifteen的博客">
-<meta property="og:description" content="武大东分09级，热爱前端设计。擅长各项前端技能，深入研究移动端开发与前端性能。非专业视觉设计师。此为博客一枚。">
+<meta property="og:description" content="最近项目中的个人中心涉及大量表单的提交，为方便ajax提交数据到后台，利用FormData对象,你可以使用一系列的键值对来模拟一个完整的表单,然后使用XMLHttpRequest发送这个”表单”.">
+<meta property="og:image" content="http://img.hb.aicdn.com/d56ca57dd18194bef73c40f344ba4d261b24390b13fa0-0ElB53_fw658">
+<meta property="og:updated_time" content="2016-09-13T06:04:09.564Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fifteen的博客">
-<meta name="twitter:description" content="武大东分09级，热爱前端设计。擅长各项前端技能，深入研究移动端开发与前端性能。非专业视觉设计师。此为博客一枚。">
+<meta name="twitter:title" content="表单提交对象--FormDate">
+<meta name="twitter:description" content="最近项目中的个人中心涉及大量表单的提交，为方便ajax提交数据到后台，利用FormData对象,你可以使用一系列的键值对来模拟一个完整的表单,然后使用XMLHttpRequest发送这个”表单”.">
+<meta name="twitter:image" content="http://img.hb.aicdn.com/d56ca57dd18194bef73c40f344ba4d261b24390b13fa0-0ElB53_fw658">
     
 
     
@@ -208,50 +211,211 @@
 </aside>
 
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-tag"></i></span>
-        <h1 class="title">#ui</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-about-FormDate" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2016/08/15/about-wx/">100个弹框设计小结</a>
+        <h1 class="article-title" itemprop="name">
+            表单提交对象--FormDate
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/08/15/about-wx/">
-            <time datetime="2016-08-15T00:55:00.000Z" itemprop="datePublished">2016-08-15</time>
+        <a href="/2016/09/13/about-FormDate/">
+            <time datetime="2016-09-13T04:30:00.000Z" itemprop="datePublished">2016-09-13</time>
         </a>
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Study/">Study</a>
+        <a class="article-category-link" href="/categories/经验/">经验</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/html/">html</a>, <a class="tag-link" href="/tags/ui/">ui</a>
+        <a class="tag-link" href="/tags/form/">form</a>, <a class="tag-link" href="/tags/js/">js</a>
     </div>
 
-                </div>
-            </div>
+                    </div>
+                
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>最近项目中的个人中心涉及大量表单的提交，为方便ajax提交数据到后台，利用FormData对象,你可以使用一系列的键值对来模拟一个完整的表单,然后使用XMLHttpRequest发送这个”表单”.</p>
+<a id="more"></a>
+<p>1.创建一个FormData对象</p>
+<p>你可以先创建一个空的FormData对象,然后使用append()方法向该对象里添加字段,如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var oMyForm = new FormData();</div><div class="line"></div><div class="line">oMyForm.append(&quot;username&quot;, &quot;Groucho&quot;);</div><div class="line">oMyForm.append(&quot;accountnum&quot;, 123456); // 数字123456被立即转换成字符串&quot;123456&quot;</div><div class="line"></div><div class="line">// fileInputElement中已经包含了用户所选择的文件</div><div class="line">oMyForm.append(&quot;userfile&quot;, fileInputElement.files[0]);</div><div class="line"></div><div class="line">var oFileBody = &quot;&lt;a id=&quot;a&quot;&gt;&lt;b id=&quot;b&quot;&gt;hey!&lt;/b&gt;&lt;/a&gt;&quot;; // Blob对象包含的文件内容</div><div class="line">var oBlob = new Blob([oFileBody], &#123; type: &quot;text/xml&quot;&#125;);</div><div class="line"></div><div class="line">oMyForm.append(&quot;webmasterfile&quot;, oBlob);</div><div class="line"></div><div class="line">var oReq = new XMLHttpRequest();</div><div class="line">oReq.open(&quot;POST&quot;, &quot;http://foo.com/submitform.php&quot;);</div><div class="line">oReq.send(oMyForm);</div></pre></td></tr></table></figure></p>
+<p>注: 字段”userfile”和”webmasterfile”的值都包含了一个文件.通过 FormData.append()方法赋给字段”accountnum”的数字被自动转换为字符(字段的值可以是一个Blob对象,一个File对象,或者一个字符串,剩下其他类型的值都会被自动转换成字符串).</p>
+<p>在该例子中,我们创建了一个名为oMyForm的FormData对象,该对象中包含了名为”username”, “accountnum”, “userfile” 以及 “webmasterfile”的字段名,然后使用XMLHttpRequest的send()方法把这些数据发送了出去.”webmasterfile”字段的值不是一个字符串,还是一个Blob对象.</p>
+<p>2.使用HTML表单来初始化一个FormData对象</p>
+<p>可以用一个已有的<form>元素来初始化FormData对象,只需要把这个form元素作为参数传入FormData构造函数即可:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var newFormData = new FormData(someFormElement);</div><div class="line"></div><div class="line">var formElement = document.getElementById(&quot;myFormElement&quot;);</div><div class="line">var oReq = new XMLHttpRequest();</div><div class="line">oReq.open(&quot;POST&quot;, &quot;submitform.php&quot;);</div><div class="line">oReq.send(new FormData(formElement));</div></pre></td></tr></table></figure></form></p>
+<p>你还可以在已有表单数据的基础上,继续添加新的键值对,如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var formElement = document.getElementById(&quot;myFormElement&quot;);</div><div class="line">formData = new FormData(formElement);</div><div class="line">formData.append(&quot;serialnumber&quot;, serialNumber++);</div><div class="line">oReq.send(formData);</div></pre></td></tr></table></figure></p>
+<p>你可以通过这种方式添加一些不想让用户编辑的固定字段,然后再发送.</p>
+<p>3.使用FormData对象发送文件<br>你还可以使用FormData来发送二进制文件.首先在HTML中要有一个包含了文件输入框的form元素:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;form enctype=&quot;multipart/form-data&quot; method=&quot;post&quot; name=&quot;fileinfo&quot;&gt;</div><div class="line">  &lt;label&gt;Your email address:&lt;/label&gt;</div><div class="line">  &lt;input type=&quot;email&quot; autocomplete=&quot;on&quot; autofocus name=&quot;userid&quot; placeholder=&quot;email&quot; required size=&quot;32&quot; maxlength=&quot;64&quot; /&gt;&lt;br /&gt;</div><div class="line">  &lt;label&gt;Custom file label:&lt;/label&gt;</div><div class="line">  &lt;input type=&quot;text&quot; name=&quot;filelabel&quot; size=&quot;12&quot; maxlength=&quot;32&quot; /&gt;&lt;br /&gt;</div><div class="line">  &lt;label&gt;File to stash:&lt;/label&gt;</div><div class="line">  &lt;input type=&quot;file&quot; name=&quot;file&quot; required /&gt;</div><div class="line">&lt;/form&gt;</div><div class="line">&lt;div id=&quot;output&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;a href=&quot;javascript:sendForm()&quot;&gt;Stash the file!&lt;/a&gt;</div></pre></td></tr></table></figure></p>
+<p>然后你就可以使用下面的代码来异步的上传用户所选择的文件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">function sendForm() &#123;</div><div class="line">  var oOutput = document.getElementById(&quot;output&quot;);</div><div class="line">  var oData = new FormData(document.forms.namedItem(&quot;fileinfo&quot;));</div><div class="line"></div><div class="line">  oData.append(&quot;CustomField&quot;, &quot;This is some extra data&quot;);</div><div class="line"></div><div class="line">  var oReq = new XMLHttpRequest();</div><div class="line">  oReq.open(&quot;POST&quot;, &quot;stash.php&quot;, true);</div><div class="line">  oReq.onload = function(oEvent) &#123;</div><div class="line">    if (oReq.status == 200) &#123;</div><div class="line">      oOutput.innerHTML = &quot;Uploaded!&quot;;</div><div class="line">    &#125; else &#123;</div><div class="line">      oOutput.innerHTML = &quot;Error &quot; + oReq.status + &quot; occurred uploading your file.&lt;br \/&gt;&quot;;</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  oReq.send(oData);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>你还可以不借助HTML表单,直接向FormData对象中添加一个File对象或者一个Blob对象:</p>
+<p>data.append(“myfile”, myBlob);<br>如果FormData对象中的某个字段值是一个Blob对象,则在发送http请求时,代表该Blob对象所包含文件的文件名的”Content-Disposition”请求头的值在不同的浏览器下有所不同,Firefox使用了固定的字符串”blob,”而Chrome使用了一个随机字符串.</p>
+<p>你还可以使用jQuery来发送FormData,但必须要正确的设置相关选项:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var fd = new FormData(document.getElementById(&quot;fileinfo&quot;));</div><div class="line">fd.append(&quot;CustomField&quot;, &quot;This is some extra data&quot;);</div><div class="line">$.ajax(&#123;</div><div class="line">  url: &quot;stash.php&quot;,</div><div class="line">  type: &quot;POST&quot;,</div><div class="line">  data: fd,</div><div class="line">  processData: false,  // 告诉jQuery不要去处理发送的数据</div><div class="line">  contentType: false   // 告诉jQuery不要去设置Content-Type请求头</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>end.</p>
+
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="http://yoursite.com/2016/09/13/about-FormDate/" data-id="cit12q1130000uovbnhnlkmqb" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2016/09/13/about-FormDate/#comments" class="article-comment-link ds-thread-count" data-thread-key="http://yoursite.com/2016/09/13/about-FormDate/">Comentarios</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2016/09/08/about-servlet/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">jsp之servlet初识</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div class="ds-thread" data-thread-key="2016/09/13/about-FormDate/" data-title="表单提交对象--FormDate" data-url="http://yoursite.com/2016/09/13/about-FormDate/"></div>
+    <style>
+        #ds-thread #ds-reset .ds-textarea-wrapper {
+            background: none;
+        }
+        #ds-reset .ds-avatar img {
+            box-shadow: none;
+        }
+        #ds-reset .ds-gradient-bg {
+            background: #f7f7f7;
+        }
+        #ds-thread #ds-reset li.ds-tab a {
+            border-radius: 3px;
+        }
+        #ds-thread #ds-reset .ds-post-button {
+            color: white;
+            border: none;
+            box-shadow: none;
+            background: #d32;
+            text-shadow: none;
+            font-weight: normal;
+            font-family: 'Microsoft Yahei';
+        }
+        #ds-thread #ds-reset .ds-post-button:hover {
+            color: white;
+            background: #DE594C;
+        }
+        #ds-thread #ds-reset .ds-post-button:active {
+            background: #d32;
+        }
+        #ds-smilies-tooltip ul.ds-smilies-tabs li a.ds-current {
+            color: white;
+            background: #d32;
+            box-shadow: none;
+            text-shadow: none;
+            font-weight: normal;
+        }
+    </style>
+
+    
+    </section>
+
 </section>
             
                 <aside id="sidebar">
